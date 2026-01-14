@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgencyOps – Plug-and-Play Operations for Marketing Agencies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700;900&family=Josefin+Sans:wght@300;400;500;600&family=Roboto+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --navy: #14213D;
+            --orange: #FCA311;
+            --gray: #E5E5E5;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: var(--gray);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 6%;
+            background: var(--white);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .logo {
+            font-family: 'Inconsolata', monospace;
+            font-weight: 900;
+            font-size: 20px;
+            color: var(--black);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .nav-cta {
+            font-family: 'Inconsolata', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px 20px;
+            background: var(--orange);
+            color: var(--black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--black);
+            color: var(--orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 100px 6% 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: var(--orange);
+            opacity: 0.06;
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.06; }
+            50% { transform: scale(1.1); opacity: 0.1; }
+        }
+
+        .badge {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--navy);
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero h1 {
+            font-family: 'Inconsolata', monospace;
+            font-size: clamp(32px, 6vw, 72px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero-sub {
+            font-family: 'Roboto Mono', monospace;
+            font-style: italic;
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--navy);
+            max-width: 600px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.8s;
+        }
+
+        .btn {
+            font-family: 'Inconsolata', monospace;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 14px 28px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            background: var(--black);
+            color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 6%;
+        }
+
+        section h2 {
+            font-family: 'Inconsolata', monospace;
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 900;
+            margin-bottom: 40px;
+        }
+
+        section h2 span {
+            color: var(--orange);
+        }
+
+        /* Problem Section */
+        .problem {
+            background: var(--white);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .problem-card {
+            padding: 28px;
+            border-left: 4px solid var(--orange);
+            background: var(--gray);
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateX(4px);
+        }
+
+        .problem-card h3 {
+            font-family: 'Inconsolata', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .problem-card p {
+            font-size: 15px;
+            color: var(--navy);
+            line-height: 1.7;
+        }
+
+        /* Process Section */
+        .process {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .process h2 {
+            color: var(--orange);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .process-card {
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .process-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-4px);
+        }
+
+        .process-number {
+            font-family: 'Inconsolata', monospace;
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--orange);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .process-card h3 {
+            font-family: 'Inconsolata', monospace;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .process-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        /* Results Section */
+        .results {
+            background: var(--gray);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .result-card {
+            background: var(--white);
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .result-icon {
+            font-family: 'Inconsolata', monospace;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--orange);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .result-card h3 {
+            font-family: 'Inconsolata', monospace;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--black);
+        }
+
+        .result-card p {
+            font-size: 14px;
+            color: var(--navy);
+            line-height: 1.7;
+        }
+
+        /* Stack Section */
+        .stack {
+            background: var(--white);
+        }
+
+        .stack-subtitle {
+            font-family: 'Roboto Mono', monospace;
+            font-style: italic;
+            font-size: 16px;
+            color: var(--navy);
+            margin-bottom: 32px;
+            margin-top: -24px;
+        }
+
+        .stack-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stack-item {
+            font-family: 'Inconsolata', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 16px;
+            background: var(--gray);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .stack-item:hover {
+            border-color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        .stack-item.primary {
+            background: var(--orange);
+            color: var(--black);
+        }
+
+        .stack-item.primary:hover {
+            transform: translateY(-2px);
+            border-color: var(--navy);
+        }
+
+        /* Proof Section */
+        .proof {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .proof h2 {
+            color: var(--white);
+        }
+
+        .proof-content {
+            max-width: 640px;
+        }
+
+        .proof-content p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .proof-stat {
+            font-family: 'Inconsolata', monospace;
+            font-weight: 700;
+            color: var(--orange);
+        }
+
+        /* Booking Section */
+        .booking {
+            background: var(--gray);
+            padding: 80px 6%;
+        }
+
+        .booking h2 {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .booking-subtitle {
+            font-family: 'Roboto Mono', monospace;
+            font-style: italic;
+            font-size: 16px;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cal-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #my-cal-inline-automation-plan-call {
+            min-height: 600px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: rgba(255, 255, 255, 0.5);
+            padding: 40px 6%;
+            text-align: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        .footer-tagline {
+            margin-top: 8px;
+            color: var(--orange);
+            font-weight: 700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: clamp(28px, 8vw, 40px);
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .process-grid,
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-card p,
+            .process-card p,
+            .result-card p {
+                font-size: 13px;
+            }
+
+            #my-cal-inline-automation-plan-call {
+                min-height: 750px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Agency<span>Ops</span></a>
+        <a href="#booking" class="nav-cta">Book a Call →</a>
+    </nav>
+
+    <section class="hero">
+        <div class="badge">// 30 day ops sprint for marketing agencies</div>
+        <h1>Plug-and-Play <span>Operations</span></h1>
+        <p class="hero-sub">Stack-agnostic automations that standardize sales, onboarding, delivery, and reporting. Proven across 100+ agency audits since 2023.</p>
+        <div class="cta-row">
+            <a href="#booking" class="btn btn-primary">Book the Call →</a>
+            <a href="#process" class="btn btn-secondary">See How It Works</a>
+        </div>
+    </section>
+
+    <section class="problem">
+        <h2>Sound <span>familiar?</span></h2>
+        <div class="problem-grid">
+            <div class="problem-card animate-on-scroll">
+                <h3>Hours lost to repetitive work</h3>
+                <p>Manual data entry, status updates, and report building are eating into your delivery time.</p>
+            </div>
+            <div class="problem-card animate-on-scroll">
+                <h3>Things slip through</h3>
+                <p>Leads go cold, handoffs get missed, and client requests sit too long because there's no system to catch them.</p>
+            </div>
+            <div class="problem-card animate-on-scroll">
+                <h3>It all lives in your head</h3>
+                <p>You are the bottleneck. The business runs because you remember everything—and that doesn't scale.</p>
+            </div>
+            <div class="problem-card animate-on-scroll">
+                <h3>Reporting eats your Fridays</h3>
+                <p>Pulling data from five platforms and formatting the same spreadsheet every single week.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <h2>The 4-Step <span>Fix</span></h2>
+        <div class="process-grid">
+            <div class="process-card animate-on-scroll">
+                <div class="process-number">01</div>
+                <h3>Find the waste</h3>
+                <p>We audit your workflows to identify exactly where time disappears.</p>
+            </div>
+            <div class="process-card animate-on-scroll">
+                <div class="process-number">02</div>
+                <h3>Fix the flow</h3>
+                <p>Cut the fluff, build the automations, and connect your tools for seamless data flow.</p>
+            </div>
+            <div class="process-card animate-on-scroll">
+                <div class="process-number">03</div>
+                <h3>Make it steady</h3>
+                <p>Launch and monitor. We add "Early Warning" alerts so you catch issues before clients do.</p>
+            </div>
+            <div class="process-card animate-on-scroll">
+                <div class="process-number">04</div>
+                <h3>Keep it running</h3>
+                <p>Full documentation and team training. Systems that run without you.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="results">
+        <h2>What you <span>get.</span></h2>
+        <div class="results-grid">
+            <div class="result-card animate-on-scroll">
+                <span class="result-icon">→</span>
+                <h3>Automated Client Onboarding</h3>
+                <p>Contract signatures trigger folder creation, access requests, kickoff scheduling, and task assignment.</p>
+            </div>
+            <div class="result-card animate-on-scroll">
+                <span class="result-icon">→</span>
+                <h3>Delivery Handoffs That Work</h3>
+                <p>Task completion triggers the next step automatically. Includes built-in QA gates and SLA alerts.</p>
+            </div>
+            <div class="result-card animate-on-scroll">
+                <span class="result-icon">→</span>
+                <h3>Weekly Reports on Autopilot</h3>
+                <p>Data pulled from ad platforms, formatted, and delivered every Friday. No spreadsheet wrangling.</p>
+            </div>
+            <div class="result-card animate-on-scroll">
+                <span class="result-icon">→</span>
+                <h3>Alerts Before Things Break</h3>
+                <p>Automated tracking for budget pacing, conversion drops, and missed deadlines.</p>
+            </div>
+            <div class="result-card animate-on-scroll">
+                <span class="result-icon">→</span>
+                <h3>SOPs Your Team Actually Uses</h3>
+                <p>Clear documentation for every automation: how to use it, how to fix it, and what changed.</p>
+            </div>
+            <div class="result-card animate-on-scroll">
+                <span class="result-icon">→</span>
+                <h3>Dashboard for Ops Visibility</h3>
+                <p>Real-time views on capacity, throughput, and where work is getting stuck.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stack">
+        <h2>Stack-<span>Agnostic.</span></h2>
+        <p class="stack-subtitle">I work with your tools, not against them.</p>
+        <div class="stack-grid">
+            <span class="stack-item primary">Make</span>
+            <span class="stack-item primary">ClickUp</span>
+            <span class="stack-item primary">Slack</span>
+            <span class="stack-item primary">Airtable</span>
+            <span class="stack-item primary">Looker Studio</span>
+            <span class="stack-item">Zapier</span>
+            <span class="stack-item">n8n</span>
+            <span class="stack-item">Asana</span>
+            <span class="stack-item">Monday</span>
+            <span class="stack-item">HubSpot</span>
+            <span class="stack-item">Close</span>
+            <span class="stack-item">GoHighLevel</span>
+            <span class="stack-item">Meta Ads</span>
+            <span class="stack-item">Google Ads</span>
+            <span class="stack-item">TikTok Ads</span>
+            <span class="stack-item">Hyros</span>
+            <span class="stack-item">TripleWhale</span>
+            <span class="stack-item">GA4</span>
+            <span class="stack-item">Supermetrics</span>
+            <span class="stack-item">Klaviyo</span>
+            <span class="stack-item">Unbounce</span>
+        </div>
+    </section>
+
+    <section class="proof">
+        <h2>Why <span>me.</span></h2>
+        <div class="proof-content">
+            <p class="animate-on-scroll">I've sat on both sides. I ran an agency from <span class="proof-stat">2023–2025</span> and felt the ops chaos firsthand. Since then, I've audited <span class="proof-stat">100+ agency backends</span> and seen the same failure modes on repeat: onboarding stalls, handoffs break, reporting stays manual.</p>
+            <p class="animate-on-scroll">I fix those patterns first—with drop-in, stack-agnostic automations built from what actually works.</p>
+        </div>
+    </section>
+
+    <section id="booking" class="booking">
+        <h2>Let's <span>talk.</span></h2>
+        <p class="booking-subtitle">20 minutes. I'll map your biggest time drains and show you what's automatable right now.</p>
+        <div class="cal-container animate-on-scroll">
+            <div id="my-cal-inline-automation-plan-call"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div>© 2026 AgencyOps — <a href="mailto:contact@getagencyops.com">contact@getagencyops.com</a></div>
+        <div class="footer-tagline">The Result: 10+ hours back per employee. Every week.</div>
+    </footer>
+
+    <!-- Cal.com embed -->
+    <script type="text/javascript">
+        (function (C, A, L) { 
+            let p = function (a, ar) { a.q.push(ar); }; 
+            let d = C.document; 
+            C.Cal = C.Cal || function () { 
+                let cal = C.Cal; 
+                let ar = arguments; 
+                if (!cal.loaded) { 
+                    cal.ns = {}; 
+                    cal.q = cal.q || []; 
+                    d.head.appendChild(d.createElement("script")).src = A; 
+                    cal.loaded = true; 
+                } 
+                if (ar[0] === L) { 
+                    const api = function () { p(api, arguments); }; 
+                    const namespace = ar[1]; 
+                    api.q = api.q || []; 
+                    if(typeof namespace === "string"){ 
+                        cal.ns[namespace] = cal.ns[namespace] || api; 
+                        p(cal.ns[namespace], ar); 
+                        p(cal, ["initNamespace", namespace]); 
+                    } else p(cal, ar); 
+                    return;
+                } 
+                p(cal, ar); 
+            }; 
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        
+        Cal("init", "automation-plan-call", {origin:"https://app.cal.com"});
+        
+        Cal.ns["automation-plan-call"]("inline", {
+            elementOrSelector:"#my-cal-inline-automation-plan-call",
+            config: {"layout":"month_view"},
+            calLink: "silas-voglmaier-ibknzg/automation-plan-call",
+        });
+        
+        Cal.ns["automation-plan-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    </script>
+
+    <!-- Scroll animation script -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
