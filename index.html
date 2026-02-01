@@ -7,12 +7,11 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-T8PEQJ5TZ8');
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgencyOps – Operations Deployment Sprint for Marketing Agencies</title>
+    <title>AgencyOps – 90-Day Operation Overhaul for Marketing Agencies</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700;900&family=Josefin+Sans:wght@300;400;500;600&family=Roboto+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -144,13 +143,23 @@
         .hero-sub {
             font-family: 'Roboto Mono', monospace;
             font-style: italic;
-            font-size: clamp(16px, 2vw, 20px);
+            font-size: clamp(14px, 1.8vw, 18px);
             color: var(--navy);
-            max-width: 600px;
-            margin-bottom: 40px;
+            max-width: 700px;
+            margin-bottom: 16px;
             opacity: 0;
             animation: fadeUp 0.6s ease forwards;
             animation-delay: 0.6s;
+        }
+
+        .hero-detail {
+            font-size: 16px;
+            color: var(--navy);
+            max-width: 700px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: 0.7s;
         }
 
         .cta-row {
@@ -242,7 +251,7 @@
 
         .problem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
 
@@ -265,9 +274,76 @@
         }
 
         .problem-card p {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--navy);
             line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .problem-card .metric {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            color: var(--orange);
+            font-weight: 700;
+        }
+
+        /* Acceptance Criteria */
+        .acceptance {
+            background: var(--gray);
+        }
+
+        .acceptance-list {
+            max-width: 800px;
+        }
+
+        .acceptance-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(20, 33, 61, 0.1);
+        }
+
+        .acceptance-item:last-child {
+            border-bottom: none;
+        }
+
+        .acceptance-number {
+            font-family: 'Inconsolata', monospace;
+            font-weight: 900;
+            font-size: 14px;
+            color: var(--orange);
+            min-width: 24px;
+        }
+
+        .acceptance-item p {
+            font-size: 15px;
+            color: var(--navy);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--orange);
+            color: var(--black);
+            text-align: center;
+            padding: 60px 6%;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--navy);
+        }
+
+        .cta-section .btn-primary {
+            background: var(--black);
+            color: var(--orange);
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--navy);
+            color: var(--white);
         }
 
         /* Process Section */
@@ -319,9 +395,57 @@
             line-height: 1.7;
         }
 
+        /* Timeline Section */
+        .timeline {
+            background: var(--gray);
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .timeline-month {
+            background: var(--white);
+            padding: 28px;
+        }
+
+        .timeline-month h3 {
+            font-family: 'Inconsolata', monospace;
+            font-size: 16px;
+            font-weight: 900;
+            color: var(--orange);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-week {
+            margin-bottom: 16px;
+        }
+
+        .timeline-week:last-child {
+            margin-bottom: 0;
+        }
+
+        .week-label {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            color: var(--navy);
+            opacity: 0.6;
+            margin-bottom: 4px;
+        }
+
+        .week-content {
+            font-size: 14px;
+            color: var(--navy);
+            line-height: 1.5;
+        }
+
         /* Results Section */
         .results {
-            background: var(--gray);
+            background: var(--white);
         }
 
         .results-grid {
@@ -331,7 +455,7 @@
         }
 
         .result-card {
-            background: var(--white);
+            background: var(--gray);
             padding: 28px;
             transition: all 0.3s ease;
         }
@@ -364,76 +488,43 @@
             line-height: 1.7;
         }
 
-        /* Stack Section */
-        .stack {
-            background: var(--white);
-        }
-
-        .stack-subtitle {
-            font-family: 'Roboto Mono', monospace;
-            font-style: italic;
-            font-size: 16px;
-            color: var(--navy);
-            margin-bottom: 32px;
-            margin-top: -24px;
-        }
-
-        .stack-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .stack-item {
-            font-family: 'Inconsolata', monospace;
-            font-size: 13px;
-            font-weight: 700;
-            padding: 8px 16px;
-            background: var(--gray);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .stack-item:hover {
-            border-color: var(--orange);
-            transform: translateY(-2px);
-        }
-
-        .stack-item.primary {
-            background: var(--orange);
-            color: var(--black);
-        }
-
-        .stack-item.primary:hover {
-            transform: translateY(-2px);
-            border-color: var(--navy);
-        }
-
-        /* Proof Section */
-        .proof {
+        /* Why Me Section */
+        .why-me {
             background: var(--black);
             color: var(--white);
         }
 
-        .proof h2 {
+        .why-me h2 {
             color: var(--white);
         }
 
-        .proof-content {
+        .why-me-content {
             max-width: 640px;
+            margin-bottom: 40px;
         }
 
-        .proof-content p {
+        .why-me-content p {
             font-size: 17px;
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 20px;
             line-height: 1.8;
         }
 
-        .proof-stat {
+        /* Artifacts */
+        .artifacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .artifact-item {
             font-family: 'Inconsolata', monospace;
+            font-size: 12px;
             font-weight: 700;
+            padding: 8px 16px;
+            background: rgba(252, 163, 17, 0.15);
             color: var(--orange);
+            border: 1px solid var(--orange);
         }
 
         /* Booking Section */
@@ -453,7 +544,8 @@
             font-size: 16px;
             color: var(--navy);
             text-align: center;
-            margin-bottom: 40px;
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
 
         .cal-container {
@@ -461,7 +553,7 @@
             margin: 0 auto;
         }
 
-        #my-cal-inline-automation-plan-call {
+        #my-cal-inline-ops-audit-call {
             min-height: 600px;
             border-radius: 4px;
             overflow: hidden;
@@ -471,19 +563,53 @@
         footer {
             background: var(--black);
             color: rgba(255, 255, 255, 0.5);
-            padding: 40px 6%;
-            text-align: center;
+            padding: 60px 6% 40px;
             font-family: 'Roboto Mono', monospace;
             font-size: 13px;
         }
 
-        footer a {
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-family: 'Inconsolata', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 16px;
+        }
+
+        .footer-section a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom a {
             color: var(--orange);
             text-decoration: none;
         }
 
         .footer-tagline {
-            margin-top: 8px;
             color: var(--orange);
             font-weight: 700;
         }
@@ -499,17 +625,17 @@
             }
 
             .process-grid,
-            .results-grid {
+            .results-grid,
+            .timeline-grid {
                 grid-template-columns: 1fr;
             }
 
-            .problem-card p,
-            .process-card p,
-            .result-card p {
-                font-size: 13px;
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
             }
 
-            #my-cal-inline-automation-plan-call {
+            #my-cal-inline-ops-audit-call {
                 min-height: 750px;
             }
         }
@@ -523,9 +649,10 @@
     </nav>
 
     <section class="hero">
-        <div class="badge">// 30 day ops sprint for marketing agencies</div>
-        <h1><span>Operations</span> Deployment Sprint </h1>
-        <p class="hero-sub">Stack-agnostic automations that standardize sales, onboarding, delivery, and reporting. Battle-tested in real agency environments since 2023.</p>
+        <div class="badge">// Replace human duct tape with automated ops</div>
+        <h1>90-Day <span>Operation Overhaul</span></h1>
+        <p class="hero-sub">Implementation in 90 days, 30 days to stabilize and train.</p>
+        <p class="hero-detail">We install drop-in, stack-agnostic automations across onboarding, delivery, reporting, and alerts. Then we stabilize, optimize, and train your team so the systems run without you.</p>
         <div class="cta-row">
             <a href="#booking" class="btn btn-primary">Book the Call →</a>
             <a href="#process" class="btn btn-secondary">See How It Works</a>
@@ -537,21 +664,56 @@
         <div class="problem-grid">
             <div class="problem-card animate-on-scroll">
                 <h3>Hours lost to repetitive work</h3>
-                <p>Manual data entry, status updates, and report building are eating into your delivery time.</p>
+                <p>Manual data entry, status updates, and report building are eating into your delivery time. Most agencies bleed 6–12 hours/week on manual work.</p>
+                <p class="metric">Fix: pipeline automation + cross-tool sync.</p>
             </div>
             <div class="problem-card animate-on-scroll">
                 <h3>Things slip through</h3>
-                <p>Leads go cold, handoffs get missed, and client requests sit too long because there's no system to catch them.</p>
+                <p>Leads go cold after day 2, handoffs break at stage transitions, and client requests sit because nothing routes to an owner.</p>
+                <p class="metric">Fix: stage-based triggers, owner assignment rules, SLA alerts.</p>
             </div>
             <div class="problem-card animate-on-scroll">
                 <h3>It all lives in your head</h3>
-                <p>You are the bottleneck. The business runs because you remember everything and that doesn't scale.</p>
+                <p>You are the bottleneck. When the founder is the router, capacity stalls at 15–25 active clients.</p>
+                <p class="metric">Fix: documented workflows + automation-driven ownership.</p>
             </div>
             <div class="problem-card animate-on-scroll">
                 <h3>Reporting eats your Fridays</h3>
-                <p>Pulling data from five platforms and formatting the same spreadsheet every single week.</p>
+                <p>Pulling data from five platforms costs 60–90 minutes per client, every week.</p>
+                <p class="metric">Fix: scheduled reporting that pulls, formats, and delivers automatically.</p>
             </div>
         </div>
+    </section>
+
+    <section class="acceptance">
+        <h2>Acceptance <span>criteria.</span></h2>
+        <div class="acceptance-list">
+            <div class="acceptance-item animate-on-scroll">
+                <span class="acceptance-number">01</span>
+                <p>Status updates and fields auto-sync across tools, no manual double entry</p>
+            </div>
+            <div class="acceptance-item animate-on-scroll">
+                <span class="acceptance-number">02</span>
+                <p>Stage transitions trigger next steps with owner assignment and QA gates</p>
+            </div>
+            <div class="acceptance-item animate-on-scroll">
+                <span class="acceptance-number">03</span>
+                <p>Weekly reports run on schedule and match source data within a defined tolerance</p>
+            </div>
+            <div class="acceptance-item animate-on-scroll">
+                <span class="acceptance-number">04</span>
+                <p>Early warning alerts fire on budget pacing, conversion drops, and missed deadlines</p>
+            </div>
+            <div class="acceptance-item animate-on-scroll">
+                <span class="acceptance-number">05</span>
+                <p>SOPs linked inside your tools, with a change log and a 60–90 minute team training</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <p>Give me 20 minutes. I'll measure your leak live, show one automation working in real time, and outline the rollout. If it's not obvious, we don't proceed.</p>
+        <a href="#booking" class="btn btn-primary">Book the Call →</a>
     </section>
 
     <section id="process" class="process">
@@ -560,22 +722,104 @@
             <div class="process-card animate-on-scroll">
                 <div class="process-number">01</div>
                 <h3>Find the waste</h3>
-                <p>We audit your workflows to identify exactly where time disappears.</p>
+                <p>We map your workflows, measure time loss, and compile a leak report with baseline metrics for onboarding speed, manual steps, show rate, failed payments, and reporting time.</p>
             </div>
             <div class="process-card animate-on-scroll">
                 <div class="process-number">02</div>
                 <h3>Fix the flow</h3>
-                <p>Cut the fluff, build the automations, and connect your tools for seamless data flow.</p>
+                <p>We cut the fluff and build automations across onboarding, delivery handoffs, reporting, and alerts. Tools connected, data deduped, lifecycle statuses enforced.</p>
             </div>
             <div class="process-card animate-on-scroll">
                 <div class="process-number">03</div>
                 <h3>Make it steady</h3>
-                <p>Launch and monitor. We add "Early Warning" alerts so you catch issues before clients do.</p>
+                <p>We launch and monitor with Early Warning alerts for budget pacing, conversion drops, and missed deadlines. Alerts routed to owners, thresholds documented, SOPs linked.</p>
             </div>
             <div class="process-card animate-on-scroll">
                 <div class="process-number">04</div>
                 <h3>Keep it running</h3>
-                <p>Full documentation and team training. Systems that run without you.</p>
+                <p>Full documentation, change log, and 60–90 minute team training. One revision round per department. Optional maintenance to keep systems healthy.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline" class="timeline">
+        <h2>16-Week <span>Build</span></h2>
+        <div class="timeline-grid">
+            <div class="timeline-month animate-on-scroll">
+                <h3>Month 1: Sales Development</h3>
+                <div class="timeline-week">
+                    <div class="week-label">Week 1</div>
+                    <div class="week-content">CRM architecture, pipeline stages, lead scoring, lifecycle statuses</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 2</div>
+                    <div class="week-content">Calendar booking automations, reminder sequences, no-show logic</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 3</div>
+                    <div class="week-content">Billing and dunning: pre-bill, failed payment recovery, renewals</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 4</div>
+                    <div class="week-content">Metrics dashboard: leads by source, show rate, conversion, speed-to-lead</div>
+                </div>
+            </div>
+            <div class="timeline-month animate-on-scroll">
+                <h3>Month 2: Client Ops</h3>
+                <div class="timeline-week">
+                    <div class="week-label">Week 5</div>
+                    <div class="week-content">Onboarding blueprint: intake, asset checklist, access collection, kickoff</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 6</div>
+                    <div class="week-content">Communication cadences: weekly updates, escalation paths, QBRs</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 7</div>
+                    <div class="week-content">Client Brain: context, preferences, results, notes, history</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 8</div>
+                    <div class="week-content">Upsell triggers: milestone-based upgrades, expansion playbooks</div>
+                </div>
+            </div>
+            <div class="timeline-month animate-on-scroll">
+                <h3>Month 3: Delivery Ops</h3>
+                <div class="timeline-week">
+                    <div class="week-label">Week 9</div>
+                    <div class="week-content">Sprint cadence, RACI ownership, QA gates, definition of done</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 10</div>
+                    <div class="week-content">Capacity planning, resourcing, workload balancing</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 11</div>
+                    <div class="week-content">Reporting automation: KPI dashboards by client, scheduled sends</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 12</div>
+                    <div class="week-content">SLAs: response times, severity map, rollback protocol</div>
+                </div>
+            </div>
+            <div class="timeline-month animate-on-scroll">
+                <h3>Month 4: Stabilize & Lock In</h3>
+                <div class="timeline-week">
+                    <div class="week-label">Week 13</div>
+                    <div class="week-content">Calibration: tune thresholds, confirm data integrity</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 14</div>
+                    <div class="week-content">Revisions: one round per department based on real usage</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 15</div>
+                    <div class="week-content">Documentation and training: SOPs finalized, team trained</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 16</div>
+                    <div class="week-content">Ops cadence: weekly review, scorecard, owner check-ins</div>
+                </div>
             </div>
         </div>
     </section>
@@ -596,7 +840,7 @@
             <div class="result-card animate-on-scroll">
                 <span class="result-icon">→</span>
                 <h3>Weekly Reports on Autopilot</h3>
-                <p>Data pulled from ad platforms, formatted, and delivered every week No spreadsheet wrangling.</p>
+                <p>Data pulled from ad platforms, formatted, and delivered every week. No spreadsheet wrangling.</p>
             </div>
             <div class="result-card animate-on-scroll">
                 <span class="result-icon">→</span>
@@ -616,57 +860,57 @@
         </div>
     </section>
 
-    <section class="stack">
-        <h2>Stack-<span>Agnostic.</span></h2>
-        <p class="stack-subtitle">I connect what you already use</p>
-        <div class="stack-grid">
-            <span class="stack-item primary">Make</span>
-            <span class="stack-item primary">ClickUp</span>
-            <span class="stack-item primary">Slack</span>
-            <span class="stack-item primary">Airtable</span>
-            <span class="stack-item primary">Looker Studio</span>
-            <span class="stack-item">Zapier</span>
-            <span class="stack-item">n8n</span>
-            <span class="stack-item">Asana</span>
-            <span class="stack-item">Monday</span>
-            <span class="stack-item">HubSpot</span>
-            <span class="stack-item">Close</span>
-            <span class="stack-item">GoHighLevel</span>
-            <span class="stack-item">Meta Ads</span>
-            <span class="stack-item">Google Ads</span>
-            <span class="stack-item">TikTok Ads</span>
-            <span class="stack-item">Hyros</span>
-            <span class="stack-item">TripleWhale</span>
-            <span class="stack-item">GA4</span>
-            <span class="stack-item">Supermetrics</span>
-            <span class="stack-item">Klaviyo</span>
-            <span class="stack-item">Unbounce</span>
-        </div>
-    </section>
-
-    <section class="proof">
+    <section class="why-me">
         <h2>Why <span>me.</span></h2>
-        <div class="proof-content">
-            <p class="animate-on-scroll">I've sat on both sides. I ran an agency from <span class="proof-stat">2023–2025</span> and felt the ops chaos firsthand. Since then, I've audited <span class="proof-stat">100+ agency backends</span> and seen the same failure modes on repeat: onboarding stalls, handoffs break, reporting stays manual.</p>
+        <div class="why-me-content">
+            <p class="animate-on-scroll">I've sat on both sides. I ran an agency and felt the ops chaos firsthand. Since then, I've audited dozens of agency backends and seen the same failure modes on repeat: onboarding stalls, handoffs break, reporting stays manual.</p>
             <p class="animate-on-scroll">I fix those patterns first—with drop-in, stack-agnostic automations built from what actually works.</p>
+        </div>
+        <div class="artifacts animate-on-scroll">
+            <span class="artifact-item">Tech-stack Health Check</span>
+            <span class="artifact-item">Math-of-Opportunity Calculator</span>
+            <span class="artifact-item">Onboarding Blueprint</span>
+            <span class="artifact-item">Expectation Matrix</span>
+            <span class="artifact-item">Retention Framework</span>
         </div>
     </section>
 
     <section id="booking" class="booking">
         <h2>Let's <span>talk.</span></h2>
-        <p class="booking-subtitle">20 minutes. I’ll map your biggest time drains and show you what we can standardize right now.</p>
+        <p class="booking-subtitle">20 minutes. I'll map your biggest time drains and show you what we can standardize right now. If it's not obvious in the first call, we don't proceed.</p>
         <div class="cal-container animate-on-scroll">
-            <div id="my-cal-inline-automation-plan-call"></div>
+            <div id="my-cal-inline-ops-audit-call"></div>
         </div>
     </section>
 
     <footer>
-        <div>© 2026 AgencyOps — <a href="mailto:contact@getagencyops.com">contact@getagencyops.com</a></div>
-        <div class="footer-tagline">Battle-tested in real agency environments since 2023.</div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Free Resources</h4>
+                <a href="#">Math-of-Opportunity Calculator</a>
+                <a href="#">Onboarding Blueprint</a>
+                <a href="#timeline">90-Day Operation Overhaul Roadmap</a>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <a href="#timeline">90-Day Operation Overhaul Roadmap</a>
+                <a href="#booking">Book an Ops Audit</a>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Data Processing Agreement</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 AgencyOps — <a href="/cdn-cgi/l/email-protection#dbb8b4b5afbab8af9bbcbeafbabcbeb5b8a2b4aba8f5b8b4b6"><span class="__cf_email__" data-cfemail="086b67667c696b7c486f6d7c696f6d666b7167787b266b6765">[email&#160;protected]</span></a></div>
+            <div class="footer-tagline">Systems that run without you.</div>
+        </div>
     </footer>
 
     <!-- Cal.com embed -->
-    <script type="text/javascript">
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
         (function (C, A, L) { 
             let p = function (a, ar) { a.q.push(ar); }; 
             let d = C.document; 
@@ -694,15 +938,15 @@
             }; 
         })(window, "https://app.cal.com/embed/embed.js", "init");
         
-        Cal("init", "automation-plan-call", {origin:"https://app.cal.com"});
+        Cal("init", "ops-audit-call", {origin:"https://cal.com"});
         
-        Cal.ns["automation-plan-call"]("inline", {
-            elementOrSelector:"#my-cal-inline-automation-plan-call",
+        Cal.ns["ops-audit-call"]("inline", {
+            elementOrSelector:"#my-cal-inline-ops-audit-call",
             config: {"layout":"month_view"},
-            calLink: "silas-voglmaier-ibknzg/automation-plan-call",
+            calLink: "silas-voglmaier-ibknzg/osp-audit-call",
         });
         
-        Cal.ns["automation-plan-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+        Cal.ns["ops-audit-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
     </script>
 
     <!-- Scroll animation script -->
@@ -717,16 +961,4 @@
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
-
-</body>
-</html>
+                        entry.target.classList.add('visible'
