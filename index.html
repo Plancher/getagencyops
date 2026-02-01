@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
+    <script>document.documentElement.classList.remove('no-js');</script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T8PEQJ5TZ8"></script>
 <script>
@@ -226,6 +227,12 @@
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Fallback if JS doesn't load */
+        .no-js .animate-on-scroll {
+            opacity: 1;
+            transform: none;
         }
 
         /* Section Styling */
@@ -746,7 +753,7 @@
         <h2>16-Week <span>Build</span></h2>
         <div class="timeline-grid">
             <div class="timeline-month animate-on-scroll">
-                <h3>Month 1: Sales Development</h3>
+                <h3>Month 1: Sales Engine</h3>
                 <div class="timeline-week">
                     <div class="week-label">Week 1</div>
                     <div class="week-content">CRM architecture, pipeline stages, lead scoring, lifecycle statuses</div>
@@ -765,7 +772,7 @@
                 </div>
             </div>
             <div class="timeline-month animate-on-scroll">
-                <h3>Month 2: Client Ops</h3>
+                <h3>Month 2: Client Success</h3>
                 <div class="timeline-week">
                     <div class="week-label">Week 5</div>
                     <div class="week-content">Onboarding blueprint: intake, asset checklist, access collection, kickoff</div>
@@ -784,7 +791,7 @@
                 </div>
             </div>
             <div class="timeline-month animate-on-scroll">
-                <h3>Month 3: Delivery Ops</h3>
+                <h3>Month 3: Fulfillment Workflows</h3>
                 <div class="timeline-week">
                     <div class="week-label">Week 9</div>
                     <div class="week-content">Sprint cadence, RACI ownership, QA gates, definition of done</div>
