@@ -560,7 +560,7 @@
             margin: 0 auto;
         }
 
-        #my-cal-inline-ops-audit-call {
+        #my-cal-inline-osp-audit-call {
             min-height: 600px;
             border-radius: 4px;
             overflow: hidden;
@@ -621,6 +621,42 @@
             font-weight: 700;
         }
 
+        .footer-quote {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 700px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            padding-left: 20px;
+            border-left: 3px solid var(--orange);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--navy);
+            padding: 80px 6%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pull-quote {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: clamp(18px, 2.5vw, 26px);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 800px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .pull-quote span {
+            color: var(--orange);
+            font-weight: 500;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -642,7 +678,7 @@
                 text-align: center;
             }
 
-            #my-cal-inline-ops-audit-call {
+            #my-cal-inline-osp-audit-call {
                 min-height: 750px;
             }
         }
@@ -658,8 +694,8 @@
     <section class="hero">
         <div class="badge">// Replace human duct tape with automated ops</div>
         <h1>90-Day <span>Operation Overhaul</span></h1>
-        <p class="hero-sub">Implementation in 90 days, 30 days to stabilize and train.</p>
-        <p class="hero-detail">We install drop-in, stack-agnostic automations across onboarding, delivery, reporting, and alerts. Then we stabilize, optimize, and train your team so the systems run without you.</p>
+        <p class="hero-sub">Use data visualization and structured workflows to make data-driven decisions and automate repetitive tasks efficiently.</p>
+        <p class="hero-detail">We install custom-coded automations and data visualizations across Sales, Client Workflows, and Delivery.</p>
         <div class="cta-row">
             <a href="#booking" class="btn btn-primary">Book the Call →</a>
             <a href="#process" class="btn btn-secondary">See How It Works</a>
@@ -692,6 +728,12 @@
         </div>
     </section>
 
+    <section class="quote-section">
+        <blockquote class="pull-quote animate-on-scroll">
+            "You're not burned out because your operation sucks. Your operation sucks because you're burned out and your business runs on human duct tape. <span>We replace it with systems.</span>"
+        </blockquote>
+    </section>
+
     <section class="acceptance">
         <h2>Acceptance <span>criteria.</span></h2>
         <div class="acceptance-list">
@@ -719,7 +761,7 @@
     </section>
 
     <section class="cta-section">
-        <p>Give me 20 minutes. I'll measure your leak live, show one automation working in real time, and outline the rollout. If it's not obvious, we don't proceed.</p>
+        <p>Give me 15 minutes. I'll measure your leak live, show one automation working in real time, and outline the rollout. If it's not obvious, we don't proceed.</p>
         <a href="#booking" class="btn btn-primary">Book the Call →</a>
     </section>
 
@@ -884,9 +926,9 @@
 
     <section id="booking" class="booking">
         <h2>Let's <span>talk.</span></h2>
-        <p class="booking-subtitle">20 minutes. I'll map your biggest time drains and show you what we can standardize right now. If it's not obvious in the first call, we don't proceed.</p>
+        <p class="booking-subtitle">15 minutes. I'll map your biggest time drains and show you what we can standardize right now. If it's not obvious in the first call, we don't proceed.</p>
         <div class="cal-container animate-on-scroll">
-            <div id="my-cal-inline-ops-audit-call"></div>
+            <div id="my-cal-inline-osp-audit-call" style="width:100%;height:100%;overflow:scroll"></div>
         </div>
     </section>
 
@@ -899,62 +941,37 @@
                 <a href="#timeline">90-Day Operation Overhaul Roadmap</a>
             </div>
             <div class="footer-section">
-                <h4>Resources</h4>
-                <a href="#timeline">90-Day Operation Overhaul Roadmap</a>
-                <a href="#booking">Book an Ops Audit</a>
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Imprint / Impressum</a>
             </div>
             <div class="footer-section">
-                <h4>Legal</h4>
-                <a href="#">Terms of Service</a>
-                <a href="#">Privacy Policy</a>
+                <h4>Security & Compliance</h4>
+                <a href="#">GDPR Notice</a>
                 <a href="#">Data Processing Agreement</a>
+                <a href="#">Data Handling</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <div>© 2026 AgencyOps — <a href="/cdn-cgi/l/email-protection#dbb8b4b5afbab8af9bbcbeafbabcbeb5b8a2b4aba8f5b8b4b6"><span class="__cf_email__" data-cfemail="086b67667c696b7c486f6d7c696f6d666b7167787b266b6765">[email&#160;protected]</span></a></div>
+            <div>© 2026 AgencyOps</div>
             <div class="footer-tagline">Systems that run without you.</div>
         </div>
     </footer>
 
-    <!-- Cal.com embed -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
-        (function (C, A, L) { 
-            let p = function (a, ar) { a.q.push(ar); }; 
-            let d = C.document; 
-            C.Cal = C.Cal || function () { 
-                let cal = C.Cal; 
-                let ar = arguments; 
-                if (!cal.loaded) { 
-                    cal.ns = {}; 
-                    cal.q = cal.q || []; 
-                    d.head.appendChild(d.createElement("script")).src = A; 
-                    cal.loaded = true; 
-                } 
-                if (ar[0] === L) { 
-                    const api = function () { p(api, arguments); }; 
-                    const namespace = ar[1]; 
-                    api.q = api.q || []; 
-                    if(typeof namespace === "string"){ 
-                        cal.ns[namespace] = cal.ns[namespace] || api; 
-                        p(cal.ns[namespace], ar); 
-                        p(cal, ["initNamespace", namespace]); 
-                    } else p(cal, ar); 
-                    return;
-                } 
-                p(cal, ar); 
-            }; 
-        })(window, "https://app.cal.com/embed/embed.js", "init");
-        
-        Cal("init", "ops-audit-call", {origin:"https://cal.com"});
-        
-        Cal.ns["ops-audit-call"]("inline", {
-            elementOrSelector:"#my-cal-inline-ops-audit-call",
-            config: {"layout":"month_view"},
-            calLink: "silas-voglmaier-ibknzg/osp-audit-call",
+    <!-- Cal inline embed code begins -->
+    <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "osp-audit-call", {origin:"https://app.cal.com"});
+        Cal.ns["osp-audit-call"]("inline", {
+            elementOrSelector:"#my-cal-inline-osp-audit-call",
+            config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+            calLink: "silas-voglmaier-test/osp-audit-call",
         });
-        
-        Cal.ns["ops-audit-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+        Cal.ns["osp-audit-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
     </script>
+    <!-- Cal inline embed code ends -->
 
     <!-- Scroll animation script -->
     <script>
@@ -968,4 +985,16 @@
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
-                        entry.target.classList.add('visible'
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
