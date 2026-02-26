@@ -134,17 +134,6 @@
             animation: fadeUp 0.6s ease forwards 0.6s;
         }
 
-        .hero-metrics {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 13px;
-            color: var(--navy);
-            opacity: 0.7;
-            max-width: 640px;
-            margin-bottom: 40px;
-            opacity: 0;
-            animation: fadeUp 0.6s ease forwards 0.7s;
-        }
-
         .cta-row {
             display: flex;
             gap: 16px;
@@ -292,6 +281,14 @@
             color: var(--black);
             font-size: clamp(24px, 4vw, 40px);
             margin-bottom: 16px;
+        }
+
+        .diagnostic-highlight {
+            color: var(--black);
+            text-decoration: underline;
+            text-decoration-color: var(--black);
+            text-underline-offset: 6px;
+            text-decoration-thickness: 3px;
         }
 
         .diagnostic p {
@@ -548,14 +545,6 @@
             max-width: 700px;
         }
 
-        .fe-price {
-            font-family: 'Inconsolata', monospace;
-            font-size: 48px;
-            font-weight: 900;
-            color: var(--orange);
-            margin-bottom: 4px;
-        }
-
         .fe-timeline {
             font-family: 'Roboto Mono', monospace;
             font-size: 13px;
@@ -682,8 +671,7 @@
 <section class="hero">
     <div class="badge">// Agency Control Layer</div>
     <h1>Your agency runs on memory. <span>We replace it with infrastructure.</span></h1>
-    <p class="hero-sub">We install operational infrastructure for performance marketing agencies at $30–100K MRR so the business runs without daily heroics. 90 days. Three departments. One system.</p>
-    <p class="hero-metrics">Onboarding from 7d → 48h · 20+ manual steps eliminated · Reporting from 90min → 15min per client</p>
+    <p class="hero-sub">Operational infrastructure for performance marketing agencies. 90 days. Three departments. One system.</p>
     <div class="cta-row">
         <a href="#booking" class="btn btn-primary">Book the Leak Mapping Session →</a>
         <a href="#process" class="btn btn-secondary">See How It Works</a>
@@ -727,7 +715,7 @@
 
 <!-- ════════ DIAGNOSTIC CTA ════════ -->
 <section class="diagnostic">
-    <h2>Could you disappear for <span>30 days</span> without chaos?</h2>
+    <h2>Could you disappear for <span class="diagnostic-highlight">30 days</span> without chaos?</h2>
     <p>In 20 minutes, I'll show you your biggest ops leaks and what they cost in real dollars. Live calculator. One automation demo. No pitch.</p>
     <a href="#booking" class="btn btn-primary">Book the Leak Mapping Session →</a>
 </section>
@@ -862,7 +850,6 @@
 <section class="front-end">
     <h2>Start here: <span>Reporting Consolidation Sprint</span></h2>
     <div class="fe-container">
-        <div class="fe-price">$1,000</div>
         <div class="fe-timeline">Delivered in 48 hours</div>
         <p>Before the full build, we fix reporting first. One system, all clients, immediate time savings — plus a full diagnostic of what else is broken.</p>
         <div class="fe-list">
@@ -874,7 +861,7 @@
             <div class="fe-list-item">15-minute Loom walkthrough of your live system</div>
         </div>
         <p>60+ minutes saved per client per month on reporting. Immediately. The system is yours to keep regardless of what happens next.</p>
-        <a href="#booking" class="btn btn-primary">Book the Leak Mapping Session →</a>
+        <a href="https://www.linkedin.com/in/silasvoglmaier/" target="_blank" rel="noopener" class="btn btn-primary">Message Me on LinkedIn for Details →</a>
     </div>
 </section>
 
@@ -910,7 +897,6 @@
         <div class="footer-section">
             <h4>Free Resources</h4>
             <a href="#">Math-of-Opportunity Calculator</a>
-            <a href="#">Onboarding Blueprint</a>
             <a href="#">Agency Ops Quick-Win Pack</a>
         </div>
         <div class="footer-section">
