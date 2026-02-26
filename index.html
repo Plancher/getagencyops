@@ -2,17 +2,17 @@
 <html lang="en" class="no-js">
 <head>
     <script>document.documentElement.classList.remove('no-js');</script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-T8PEQJ5TZ8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-T8PEQJ5TZ8');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T8PEQJ5TZ8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-T8PEQJ5TZ8');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgencyOps – 90-Day Operation Overhaul for Marketing Agencies</title>
+    <title>Agency Control Layer — Founder-Dependent → System-Driven in 90 Days</title>
+    <meta name="description" content="We replace founder-dependent chaos with operational infrastructure for performance marketing agencies at $30–100K MRR. 90-day build across sales, client ops, and delivery.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700;900&family=Josefin+Sans:wght@300;400;500;600&family=Roboto+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -23,17 +23,11 @@
             --orange: #FCA311;
             --gray: #E5E5E5;
             --white: #FFFFFF;
+            --warm-bg: #F5F0E8;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Josefin Sans', sans-serif;
@@ -42,7 +36,7 @@
             line-height: 1.6;
         }
 
-        /* Navigation */
+        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0;
@@ -64,10 +58,7 @@
             color: var(--black);
             text-decoration: none;
         }
-
-        .logo span {
-            color: var(--orange);
-        }
+        .logo span { color: var(--orange); }
 
         .nav-cta {
             font-family: 'Inconsolata', monospace;
@@ -79,39 +70,33 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-
         .nav-cta:hover {
             background: var(--black);
             color: var(--orange);
         }
 
-        /* Hero Section */
+        /* ── HERO ── */
         .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 100px 6% 60px;
+            padding: 120px 6% 80px;
             position: relative;
             overflow: hidden;
+            background: var(--white);
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
+            top: -40%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
             background: var(--orange);
-            opacity: 0.06;
+            opacity: 0.04;
             border-radius: 50%;
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.06; }
-            50% { transform: scale(1.1); opacity: 0.1; }
         }
 
         .badge {
@@ -122,45 +107,42 @@
             color: var(--navy);
             margin-bottom: 24px;
             opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
-            animation-delay: 0.2s;
+            animation: fadeUp 0.6s ease forwards 0.2s;
         }
 
         .hero h1 {
             font-family: 'Inconsolata', monospace;
-            font-size: clamp(32px, 6vw, 72px);
+            font-size: clamp(32px, 5.5vw, 64px);
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+            max-width: 800px;
             opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
-            animation-delay: 0.4s;
+            animation: fadeUp 0.6s ease forwards 0.4s;
         }
-
-        .hero h1 span {
-            color: var(--orange);
-        }
+        .hero h1 span { color: var(--orange); }
 
         .hero-sub {
-            font-family: 'Roboto Mono', monospace;
-            font-style: italic;
-            font-size: clamp(14px, 1.8vw, 18px);
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: clamp(16px, 2vw, 20px);
+            font-weight: 400;
             color: var(--navy);
-            max-width: 700px;
-            margin-bottom: 16px;
+            max-width: 640px;
+            margin-bottom: 12px;
+            line-height: 1.7;
             opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
-            animation-delay: 0.6s;
+            animation: fadeUp 0.6s ease forwards 0.6s;
         }
 
-        .hero-detail {
-            font-size: 16px;
+        .hero-metrics {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
             color: var(--navy);
-            max-width: 700px;
+            opacity: 0.7;
+            max-width: 640px;
             margin-bottom: 40px;
             opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
-            animation-delay: 0.7s;
+            animation: fadeUp 0.6s ease forwards 0.7s;
         }
 
         .cta-row {
@@ -168,8 +150,7 @@
             gap: 16px;
             flex-wrap: wrap;
             opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
-            animation-delay: 0.8s;
+            animation: fadeUp 0.6s ease forwards 0.8s;
         }
 
         .btn {
@@ -181,13 +162,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+            display: inline-block;
         }
 
         .btn-primary {
             background: var(--orange);
             color: var(--black);
         }
-
         .btn-primary:hover {
             background: var(--black);
             color: var(--orange);
@@ -199,7 +180,6 @@
             color: var(--navy);
             border: 2px solid var(--navy);
         }
-
         .btn-secondary:hover {
             background: var(--navy);
             color: var(--white);
@@ -207,301 +187,327 @@
         }
 
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Scroll animations */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
         }
-
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Fallback if JS doesn't load */
         .no-js .animate-on-scroll {
             opacity: 1;
             transform: none;
         }
 
-        /* Section Styling */
-        section {
-            padding: 80px 6%;
-        }
-
+        /* ── SECTIONS ── */
+        section { padding: 80px 6%; }
         section h2 {
             font-family: 'Inconsolata', monospace;
             font-size: clamp(28px, 5vw, 48px);
             font-weight: 900;
             margin-bottom: 40px;
         }
+        section h2 span { color: var(--orange); }
 
-        section h2 span {
-            color: var(--orange);
+        /* ── PAIN SECTION ── */
+        .pain { background: var(--white); }
+
+        .pain-intro {
+            font-size: 18px;
+            color: var(--navy);
+            max-width: 640px;
+            margin-bottom: 40px;
+            line-height: 1.8;
         }
 
-        /* Problem Section */
-        .problem {
-            background: var(--white);
-        }
-
-        .problem-grid {
+        .pain-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
 
-        .problem-card {
+        .pain-card {
             padding: 28px;
             border-left: 4px solid var(--orange);
             background: var(--gray);
             transition: transform 0.3s ease;
         }
+        .pain-card:hover { transform: translateX(4px); }
 
-        .problem-card:hover {
-            transform: translateX(4px);
-        }
-
-        .problem-card h3 {
+        .pain-card h3 {
             font-family: 'Inconsolata', monospace;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             margin-bottom: 10px;
         }
-
-        .problem-card p {
+        .pain-card p {
             font-size: 14px;
             color: var(--navy);
             line-height: 1.7;
-            margin-bottom: 12px;
         }
-
-        .problem-card .metric {
+        .pain-card .cost {
             font-family: 'Roboto Mono', monospace;
             font-size: 12px;
             color: var(--orange);
             font-weight: 700;
+            margin-top: 12px;
         }
 
-        /* Acceptance Criteria */
-        .acceptance {
-            background: var(--gray);
-        }
-
-        .acceptance-list {
-            max-width: 800px;
-        }
-
-        .acceptance-item {
+        /* ── QUOTE ── */
+        .quote-section {
+            background: var(--navy);
+            padding: 80px 6%;
             display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(20, 33, 61, 0.1);
+            justify-content: center;
         }
 
-        .acceptance-item:last-child {
-            border-bottom: none;
-        }
-
-        .acceptance-number {
-            font-family: 'Inconsolata', monospace;
-            font-weight: 900;
-            font-size: 14px;
-            color: var(--orange);
-            min-width: 24px;
-        }
-
-        .acceptance-item p {
-            font-size: 15px;
-            color: var(--navy);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: var(--orange);
-            color: var(--black);
+        .pull-quote {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: clamp(18px, 2.5vw, 26px);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 800px;
+            line-height: 1.8;
             text-align: center;
+        }
+        .pull-quote strong {
+            color: var(--orange);
+            font-weight: 500;
+        }
+
+        /* ── DIAGNOSTIC CTA ── */
+        .diagnostic {
+            background: var(--orange);
             padding: 60px 6%;
+            text-align: center;
         }
 
-        .cta-section p {
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 30px;
+        .diagnostic h2 {
+            color: var(--black);
+            font-size: clamp(24px, 4vw, 40px);
+            margin-bottom: 16px;
+        }
+
+        .diagnostic p {
+            font-size: 17px;
             color: var(--navy);
+            max-width: 560px;
+            margin: 0 auto 30px;
         }
 
-        .cta-section .btn-primary {
+        .diagnostic .btn-primary {
             background: var(--black);
             color: var(--orange);
         }
-
-        .cta-section .btn-primary:hover {
+        .diagnostic .btn-primary:hover {
             background: var(--navy);
             color: var(--white);
         }
 
-        /* Process Section */
+        /* ── PROCESS (3 PHASES) ── */
         .process {
             background: var(--navy);
             color: var(--white);
         }
+        .process h2 { color: var(--orange); }
 
-        .process h2 {
-            color: var(--orange);
+        .process-intro {
+            font-size: 17px;
+            color: rgba(255,255,255,0.7);
+            max-width: 640px;
+            margin-bottom: 40px;
+            line-height: 1.8;
         }
 
-        .process-grid {
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .phase-card {
+            padding: 32px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+        .phase-card:hover {
+            background: rgba(255,255,255,0.07);
+            transform: translateY(-4px);
+        }
+
+        .phase-label {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 8px;
+        }
+
+        .phase-card h3 {
+            font-family: 'Inconsolata', monospace;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .phase-emotion {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--orange);
+            margin-bottom: 16px;
+        }
+
+        .phase-card p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.7;
+        }
+
+        /* ── DEPARTMENTS ── */
+        .departments { background: var(--gray); }
+
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .dept-card {
+            background: var(--white);
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .dept-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .dept-card h3 {
+            font-family: 'Inconsolata', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--black);
+        }
+
+        .dept-item {
+            font-size: 14px;
+            color: var(--navy);
+            line-height: 1.7;
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+        }
+        .dept-item::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--orange);
+            font-family: 'Inconsolata', monospace;
+            font-weight: 700;
+        }
+
+        .dept-relief {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--orange);
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray);
+        }
+
+        /* ── OUTCOMES ── */
+        .outcomes { background: var(--white); }
+
+        .outcomes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
-        .process-card {
+        .outcome-card {
+            background: var(--gray);
             padding: 28px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s ease;
         }
-
-        .process-card:hover {
-            background: rgba(255, 255, 255, 0.07);
+        .outcome-card:hover {
             transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
         }
 
-        .process-number {
+        .outcome-metric {
             font-family: 'Inconsolata', monospace;
-            font-size: 56px;
+            font-size: 32px;
             font-weight: 900;
             color: var(--orange);
-            line-height: 1;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
-        .process-card h3 {
+        .outcome-card h3 {
             font-family: 'Inconsolata', monospace;
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
-        .process-card p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.7;
-        }
-
-        /* Timeline Section */
-        .timeline {
-            background: var(--gray);
-        }
-
-        .timeline-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .timeline-month {
-            background: var(--white);
-            padding: 28px;
-        }
-
-        .timeline-month h3 {
-            font-family: 'Inconsolata', monospace;
-            font-size: 16px;
-            font-weight: 900;
-            color: var(--orange);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .timeline-week {
-            margin-bottom: 16px;
-        }
-
-        .timeline-week:last-child {
-            margin-bottom: 0;
-        }
-
-        .week-label {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 11px;
+        .outcome-card p {
+            font-size: 13px;
             color: var(--navy);
-            opacity: 0.6;
+            line-height: 1.6;
+        }
+
+        /* ── DELIVERABLES ── */
+        .deliverables { background: var(--gray); }
+
+        .deliv-list {
+            max-width: 700px;
+        }
+
+        .deliv-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(20,33,61,0.1);
+            align-items: flex-start;
+        }
+        .deliv-item:last-child { border-bottom: none; }
+
+        .deliv-icon {
+            font-family: 'Inconsolata', monospace;
+            font-weight: 900;
+            font-size: 14px;
+            color: var(--orange);
+            min-width: 24px;
+            padding-top: 2px;
+        }
+
+        .deliv-item h4 {
+            font-family: 'Inconsolata', monospace;
+            font-size: 15px;
+            font-weight: 700;
             margin-bottom: 4px;
         }
 
-        .week-content {
+        .deliv-item p {
             font-size: 14px;
             color: var(--navy);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        /* Results Section */
-        .results {
-            background: var(--white);
-        }
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .result-card {
-            background: var(--gray);
-            padding: 28px;
-            transition: all 0.3s ease;
-        }
-
-        .result-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-        }
-
-        .result-icon {
-            font-family: 'Inconsolata', monospace;
-            font-size: 28px;
-            font-weight: 900;
-            color: var(--orange);
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .result-card h3 {
-            font-family: 'Inconsolata', monospace;
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--black);
-        }
-
-        .result-card p {
-            font-size: 14px;
-            color: var(--navy);
-            line-height: 1.7;
-        }
-
-        /* Why Me Section */
+        /* ── WHY ME ── */
         .why-me {
             background: var(--black);
-            color: var(--white);
-        }
-
-        .why-me h2 {
             color: var(--white);
         }
 
@@ -512,12 +518,11 @@
 
         .why-me-content p {
             font-size: 17px;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255,255,255,0.8);
             margin-bottom: 20px;
             line-height: 1.8;
         }
 
-        /* Artifacts */
         .artifacts {
             display: flex;
             flex-wrap: wrap;
@@ -529,21 +534,69 @@
             font-size: 12px;
             font-weight: 700;
             padding: 8px 16px;
-            background: rgba(252, 163, 17, 0.15);
+            background: rgba(252,163,17,0.15);
             color: var(--orange);
             border: 1px solid var(--orange);
         }
 
-        /* Booking Section */
+        /* ── FRONT-END OFFER ── */
+        .front-end {
+            background: var(--warm-bg);
+        }
+
+        .fe-container {
+            max-width: 700px;
+        }
+
+        .fe-price {
+            font-family: 'Inconsolata', monospace;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--orange);
+            margin-bottom: 4px;
+        }
+
+        .fe-timeline {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            color: var(--navy);
+            margin-bottom: 24px;
+        }
+
+        .fe-container p {
+            font-size: 16px;
+            color: var(--navy);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .fe-list {
+            margin: 24px 0 32px;
+        }
+
+        .fe-list-item {
+            font-size: 15px;
+            color: var(--navy);
+            line-height: 1.7;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .fe-list-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--orange);
+            font-weight: 700;
+        }
+
+        /* ── BOOKING ── */
         .booking {
             background: var(--gray);
             padding: 80px 6%;
         }
 
-        .booking h2 {
-            text-align: center;
-            margin-bottom: 12px;
-        }
+        .booking h2 { text-align: center; margin-bottom: 12px; }
 
         .booking-subtitle {
             font-family: 'Roboto Mono', monospace;
@@ -560,16 +613,12 @@
             margin: 0 auto;
         }
 
-        #my-cal-inline-osp-audit-call {
-            min-height: 600px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
+        #my-cal-inline { min-height: 600px; overflow: hidden; }
 
-        /* Footer */
+        /* ── FOOTER ── */
         footer {
             background: var(--black);
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255,255,255,0.5);
             padding: 60px 6% 40px;
             font-family: 'Roboto Mono', monospace;
             font-size: 13px;
@@ -592,18 +641,15 @@
 
         .footer-section a {
             display: block;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255,255,255,0.6);
             text-decoration: none;
             margin-bottom: 8px;
             transition: color 0.3s ease;
         }
-
-        .footer-section a:hover {
-            color: var(--orange);
-        }
+        .footer-section a:hover { color: var(--orange); }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 30px;
             display: flex;
             justify-content: space-between;
@@ -611,390 +657,306 @@
             gap: 20px;
         }
 
-        .footer-bottom a {
-            color: var(--orange);
-            text-decoration: none;
-        }
-
         .footer-tagline {
             color: var(--orange);
             font-weight: 700;
         }
 
-        .footer-quote {
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 18px;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 700px;
-            line-height: 1.8;
-            margin-bottom: 50px;
-            padding-left: 20px;
-            border-left: 3px solid var(--orange);
-        }
-
-        /* Quote Section */
-        .quote-section {
-            background: var(--navy);
-            padding: 80px 6%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .pull-quote {
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: clamp(18px, 2.5vw, 26px);
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 800px;
-            line-height: 1.8;
-            text-align: center;
-        }
-
-        .pull-quote span {
-            color: var(--orange);
-            font-weight: 500;
-        }
-
-        /* Responsive */
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: clamp(28px, 8vw, 40px);
-            }
-
-            section {
-                padding: 60px 5%;
-            }
-
-            .process-grid,
-            .results-grid,
-            .timeline-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            #my-cal-inline-osp-audit-call {
-                min-height: 750px;
-            }
+            section { padding: 60px 5%; }
+            .phase-grid, .dept-grid, .outcomes-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            #my-cal-inline { min-height: 750px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">Agency<span>Ops</span></a>
-        <a href="#booking" class="nav-cta">Book a Call →</a>
-    </nav>
+<nav>
+    <a href="#" class="logo">Agency<span>Ops</span></a>
+    <a href="#booking" class="nav-cta">Leak Mapping Session →</a>
+</nav>
 
-    <section class="hero">
-        <div class="badge">// Replace human duct tape with automated ops</div>
-        <h1>90-Day <span>Operation Overhaul</span></h1>
-        <p class="hero-sub">Use data visualization and structured workflows to make data-driven decisions and automate repetitive tasks efficiently.</p>
-        <p class="hero-detail">We install custom-coded automations and data visualizations.</p>
-        <div class="cta-row">
-            <a href="#booking" class="btn btn-primary">Book the Call →</a>
-            <a href="#process" class="btn btn-secondary">See How It Works</a>
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+    <div class="badge">// Agency Control Layer</div>
+    <h1>Your agency runs on memory. <span>We replace it with infrastructure.</span></h1>
+    <p class="hero-sub">We install operational infrastructure for performance marketing agencies at $30–100K MRR so the business runs without daily heroics. 90 days. Three departments. One system.</p>
+    <p class="hero-metrics">Onboarding from 7d → 48h · 20+ manual steps eliminated · Reporting from 90min → 15min per client</p>
+    <div class="cta-row">
+        <a href="#booking" class="btn btn-primary">Book the Leak Mapping Session →</a>
+        <a href="#process" class="btn btn-secondary">See How It Works</a>
+    </div>
+</section>
+
+<!-- ════════ PAIN ════════ -->
+<section class="pain">
+    <h2>The real <span>problem.</span></h2>
+    <p class="pain-intro">You're not tired because you work hard. You're tired because your agency runs on memory, and every system routes through you.</p>
+    <div class="pain-grid">
+        <div class="pain-card animate-on-scroll">
+            <h3>Founder dependency</h3>
+            <p>If you disappear for 7 days, things break. You're the router for every decision, every handoff, every escalation.</p>
+            <div class="cost">Cost: your capacity ceiling.</div>
         </div>
-    </section>
-
-    <section class="problem">
-        <h2>Sound <span>familiar?</span></h2>
-        <div class="problem-grid">
-            <div class="problem-card animate-on-scroll">
-                <h3>Hours lost to repetitive work</h3>
-                <p>Manual data entry, status updates, and report building are eating into your delivery time. Most agencies bleed 6–12 hours/week on manual work.</p>
-                <p class="metric">Fix: pipeline automation + cross-tool sync.</p>
-            </div>
-            <div class="problem-card animate-on-scroll">
-                <h3>Things slip through</h3>
-                <p>Leads go cold after day 2, handoffs break at stage transitions, and client requests sit because nothing routes to an owner.</p>
-                <p class="metric">Fix: stage-based triggers, owner assignment rules, SLA alerts.</p>
-            </div>
-            <div class="problem-card animate-on-scroll">
-                <h3>It all lives in your head</h3>
-                <p>You are the bottleneck. When the founder is the router, capacity stalls at 15–25 active clients.</p>
-                <p class="metric">Fix: documented workflows + automation-driven ownership.</p>
-            </div>
-            <div class="problem-card animate-on-scroll">
-                <h3>Reporting eats your Fridays</h3>
-                <p>Pulling data from five platforms costs 60–90 minutes per client, every week.</p>
-                <p class="metric">Fix: scheduled reporting that pulls, formats, and delivers automatically.</p>
-            </div>
+        <div class="pain-card animate-on-scroll">
+            <h3>Invisible revenue leaks</h3>
+            <p>Failed payments nobody catches. Missed upsells. Low show rates. Scope creep on every client. You feel it, but can't see it.</p>
+            <div class="cost">Cost: $3,000–$8,000/month in ops waste.</div>
         </div>
-    </section>
-
-    <section class="quote-section">
-        <blockquote class="pull-quote animate-on-scroll">
-            "You're not burned out because your operation sucks. Your operation sucks because you're burned out and your business runs on human duct tape. <span>We replace it with systems.</span>"
-        </blockquote>
-    </section>
-
-    <section class="acceptance">
-        <h2>Acceptance <span>criteria.</span></h2>
-        <div class="acceptance-list">
-            <div class="acceptance-item animate-on-scroll">
-                <span class="acceptance-number">01</span>
-                <p>Status updates and fields auto-sync across tools, no manual double entry</p>
-            </div>
-            <div class="acceptance-item animate-on-scroll">
-                <span class="acceptance-number">02</span>
-                <p>Stage transitions trigger next steps with owner assignment and QA gates</p>
-            </div>
-            <div class="acceptance-item animate-on-scroll">
-                <span class="acceptance-number">03</span>
-                <p>Weekly reports run on schedule and match source data within a defined tolerance</p>
-            </div>
-            <div class="acceptance-item animate-on-scroll">
-                <span class="acceptance-number">04</span>
-                <p>Early warning alerts fire on budget pacing, conversion drops, and missed deadlines</p>
-            </div>
-            <div class="acceptance-item animate-on-scroll">
-                <span class="acceptance-number">05</span>
-                <p>SOPs linked inside your tools, with a change log and a 60–90 minute team training</p>
-            </div>
+        <div class="pain-card animate-on-scroll">
+            <h3>Cognitive overload</h3>
+            <p>Slack. Email. ClickUp. CRM. Ads manager. Dashboards. Fifteen tools, no single source of truth. You wake up tired.</p>
+            <div class="cost">Cost: 6–12 hours/week on manual work.</div>
         </div>
-    </section>
-
-    <section class="cta-section">
-        <p>Give me 15 minutes. I'll measure your leak live, show one automation working in real time, and outline the rollout. If it's not obvious, we don't proceed.</p>
-        <a href="#booking" class="btn btn-primary">Book the Call →</a>
-    </section>
-
-    <section id="process" class="process">
-        <h2>The 4-Step <span>Fix</span></h2>
-        <div class="process-grid">
-            <div class="process-card animate-on-scroll">
-                <div class="process-number">01</div>
-                <h3>Find the waste</h3>
-                <p>We map your workflows, measure time loss, and compile a leak report with baseline metrics for onboarding speed, manual steps, show rate, failed payments, and reporting time.</p>
-            </div>
-            <div class="process-card animate-on-scroll">
-                <div class="process-number">02</div>
-                <h3>Fix the flow</h3>
-                <p>We cut the fluff and build automations across onboarding, delivery handoffs, reporting, and alerts. Tools connected, data deduped, lifecycle statuses enforced.</p>
-            </div>
-            <div class="process-card animate-on-scroll">
-                <div class="process-number">03</div>
-                <h3>Make it steady</h3>
-                <p>We launch and monitor with Early Warning alerts for budget pacing, conversion drops, and missed deadlines. Alerts routed to owners, thresholds documented, SOPs linked.</p>
-            </div>
-            <div class="process-card animate-on-scroll">
-                <div class="process-number">04</div>
-                <h3>Keep it running</h3>
-                <p>Full documentation, change log, and 60–90 minute team training. One revision round per department. Optional maintenance to keep systems healthy.</p>
-            </div>
+        <div class="pain-card animate-on-scroll">
+            <h3>No system = no valuation</h3>
+            <p>Without clean ops: hard to scale, hard to sell, hard to delegate. Your backend is either an asset or a liability.</p>
+            <div class="cost">Cost: growth that creates chaos.</div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="timeline" class="timeline">
-        <h2>16-Week <span>Build</span></h2>
-        <div class="timeline-grid">
-            <div class="timeline-month animate-on-scroll">
-                <h3>Month 1: Sales Engine</h3>
-                <div class="timeline-week">
-                    <div class="week-label">Week 1</div>
-                    <div class="week-content">CRM architecture, pipeline stages, lead scoring, lifecycle statuses</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 2</div>
-                    <div class="week-content">Calendar booking automations, reminder sequences, no-show logic</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 3</div>
-                    <div class="week-content">Billing and dunning: pre-bill, failed payment recovery, renewals</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 4</div>
-                    <div class="week-content">Metrics dashboard: leads by source, show rate, conversion, speed-to-lead</div>
-                </div>
-            </div>
-            <div class="timeline-month animate-on-scroll">
-                <h3>Month 2: Client Success</h3>
-                <div class="timeline-week">
-                    <div class="week-label">Week 5</div>
-                    <div class="week-content">Onboarding blueprint: intake, asset checklist, access collection, kickoff</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 6</div>
-                    <div class="week-content">Communication cadences: weekly updates, escalation paths, QBRs</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 7</div>
-                    <div class="week-content">Client Brain: context, preferences, results, notes, history</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 8</div>
-                    <div class="week-content">Upsell triggers: milestone-based upgrades, expansion playbooks</div>
-                </div>
-            </div>
-            <div class="timeline-month animate-on-scroll">
-                <h3>Month 3: Fulfillment Workflows</h3>
-                <div class="timeline-week">
-                    <div class="week-label">Week 9</div>
-                    <div class="week-content">Sprint cadence, RACI ownership, QA gates, definition of done</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 10</div>
-                    <div class="week-content">Capacity planning, resourcing, workload balancing</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 11</div>
-                    <div class="week-content">Reporting automation: KPI dashboards by client, scheduled sends</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 12</div>
-                    <div class="week-content">SLAs: response times, severity map, rollback protocol</div>
-                </div>
-            </div>
-            <div class="timeline-month animate-on-scroll">
-                <h3>Month 4: Stabilize & Lock In (Optional)</h3>
-                <div class="timeline-week">
-                    <div class="week-label">Week 13</div>
-                    <div class="week-content">Calibration: tune thresholds, confirm data integrity</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 14</div>
-                    <div class="week-content">Revisions: one round per department based on real usage</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 15</div>
-                    <div class="week-content">Documentation and training: SOPs finalized, team trained</div>
-                </div>
-                <div class="timeline-week">
-                    <div class="week-label">Week 16</div>
-                    <div class="week-content">Ops cadence: weekly review, scorecard, owner check-ins</div>
-                </div>
+<!-- ════════ QUOTE ════════ -->
+<section class="quote-section">
+    <blockquote class="pull-quote animate-on-scroll">
+        "You're not burned out because your operation sucks. Your operation sucks because you're burned out and your business runs on human duct tape. <strong>We replace it with systems.</strong>"
+    </blockquote>
+</section>
+
+<!-- ════════ DIAGNOSTIC CTA ════════ -->
+<section class="diagnostic">
+    <h2>Could you disappear for <span>30 days</span> without chaos?</h2>
+    <p>In 20 minutes, I'll show you your biggest ops leaks and what they cost in real dollars. Live calculator. One automation demo. No pitch.</p>
+    <a href="#booking" class="btn btn-primary">Book the Leak Mapping Session →</a>
+</section>
+
+<!-- ════════ PROCESS ════════ -->
+<section id="process" class="process">
+    <h2>The 90-Day <span>Build</span></h2>
+    <p class="process-intro">Three phases. Each one changes how the business feels, not just how it works.</p>
+    <div class="phase-grid">
+        <div class="phase-card animate-on-scroll">
+            <div class="phase-label">Weeks 1–4</div>
+            <h3>Visibility</h3>
+            <p class="phase-emotion">You finally see where money and time are leaking.</p>
+            <p>Metrics defined and baselined. Dashboards built and connected. Leak points identified. Tech-stack audited. Reporting automated.</p>
+        </div>
+        <div class="phase-card animate-on-scroll">
+            <div class="phase-label">Weeks 5–8</div>
+            <h3>Control</h3>
+            <p class="phase-emotion">Manual steps disappear. Handoffs stop breaking.</p>
+            <p>Onboarding compressed to under 48 hours. CRM hygiene installed. Billing recovery automated. PM clarity established. Communication cadences set.</p>
+        </div>
+        <div class="phase-card animate-on-scroll">
+            <div class="phase-label">Weeks 9–12</div>
+            <h3>Stability</h3>
+            <p class="phase-emotion">The business runs without daily heroics.</p>
+            <p>Full automation installs across all departments. Team handover completed. Stress-test and refine. System documented and transferred.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ DEPARTMENTS ════════ -->
+<section class="departments">
+    <h2>What gets <span>built.</span></h2>
+    <div class="dept-grid">
+        <div class="dept-card animate-on-scroll">
+            <h3>Sales Development</h3>
+            <div class="dept-item">CRM architecture, pipeline stages, lead scoring, lifecycle statuses</div>
+            <div class="dept-item">Calendar booking automations, reminder sequences, no-show logic</div>
+            <div class="dept-item">Billing and dunning: pre-bill, failed payment recovery, renewals</div>
+            <div class="dept-item">Metrics dashboard: leads by source, show rate, conversion, speed-to-lead</div>
+            <p class="dept-relief">So your pipeline stops leaking and you stop chasing payments manually.</p>
+        </div>
+        <div class="dept-card animate-on-scroll">
+            <h3>Client Workflows</h3>
+            <div class="dept-item">Onboarding blueprint: intake, asset checklist, access collection, kickoff</div>
+            <div class="dept-item">Communication cadences: weekly updates, escalation paths, QBRs</div>
+            <div class="dept-item">Client Brain: context, preferences, results, notes, history</div>
+            <div class="dept-item">Upsell triggers: milestone-based upgrade logic, expansion playbooks</div>
+            <p class="dept-relief">So your team stops asking you how to handle every new client.</p>
+        </div>
+        <div class="dept-card animate-on-scroll">
+            <h3>Project Management &amp; Delivery</h3>
+            <div class="dept-item">Sprint cadence, RACI ownership, QA gates, definition of done</div>
+            <div class="dept-item">Capacity planning, resourcing, workload balancing</div>
+            <div class="dept-item">Reporting automation: KPI dashboards by client, scheduled sends</div>
+            <div class="dept-item">SLAs: response times, severity map, rollback protocol</div>
+            <p class="dept-relief">So you see overload before clients feel it.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ OUTCOMES ════════ -->
+<section class="outcomes">
+    <h2>Specific <span>outcomes.</span></h2>
+    <div class="outcomes-grid">
+        <div class="outcome-card animate-on-scroll">
+            <div class="outcome-metric">&lt;48h</div>
+            <h3>Onboarding time</h3>
+            <p>Down from 7 days. Intake, access, kickoff — all automated.</p>
+        </div>
+        <div class="outcome-card animate-on-scroll">
+            <div class="outcome-metric">20+</div>
+            <h3>Manual steps eliminated</h3>
+            <p>Per client, across CRM, PM, and billing.</p>
+        </div>
+        <div class="outcome-card animate-on-scroll">
+            <div class="outcome-metric">15 min</div>
+            <h3>Reporting per client</h3>
+            <p>Down from 90 minutes. Pulled, formatted, delivered automatically.</p>
+        </div>
+        <div class="outcome-card animate-on-scroll">
+            <div class="outcome-metric">Auto</div>
+            <h3>Failed payment recovery</h3>
+            <p>Dunning and pre-bill workflows catch revenue before it's lost.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ DELIVERABLES ════════ -->
+<section class="deliverables">
+    <h2>What you <span>walk away with.</span></h2>
+    <div class="deliv-list">
+        <div class="deliv-item animate-on-scroll">
+            <span class="deliv-icon">01</span>
+            <div>
+                <h4>Ops Map &amp; SOPs</h4>
+                <p>The documented playbook so your team runs it, not you.</p>
             </div>
         </div>
-    </section>
+        <div class="deliv-item animate-on-scroll">
+            <span class="deliv-icon">02</span>
+            <div>
+                <h4>Automation Blueprint</h4>
+                <p>Which tasks get automated, how they connect, and the build sequence.</p>
+            </div>
+        </div>
+        <div class="deliv-item animate-on-scroll">
+            <span class="deliv-icon">03</span>
+            <div>
+                <h4>Live Dashboards</h4>
+                <p>Real-time visibility into hours saved, revenue caught, bottlenecks, and team performance.</p>
+            </div>
+        </div>
+        <div class="deliv-item animate-on-scroll">
+            <span class="deliv-icon">04</span>
+            <div>
+                <h4>Team Handover Package</h4>
+                <p>Video training + documentation so your team maintains and improves without you.</p>
+            </div>
+        </div>
+        <div class="deliv-item animate-on-scroll">
+            <span class="deliv-icon">05</span>
+            <div>
+                <h4>Change Log &amp; Audit Trail</h4>
+                <p>Track what changed, when, why, and the impact.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <section class="results">
-        <h2>What you <span>get.</span></h2>
-        <div class="results-grid">
-            <div class="result-card animate-on-scroll">
-                <span class="result-icon">→</span>
-                <h3>Automated Client Onboarding</h3>
-                <p>Contract signatures trigger folder creation, access requests, kickoff scheduling, and task assignment.</p>
-            </div>
-            <div class="result-card animate-on-scroll">
-                <span class="result-icon">→</span>
-                <h3>Delivery Handoffs That Work</h3>
-                <p>Task completion triggers the next step automatically. Includes built-in QA gates and SLA alerts.</p>
-            </div>
-            <div class="result-card animate-on-scroll">
-                <span class="result-icon">→</span>
-                <h3>Weekly Reports on Autopilot</h3>
-                <p>Data pulled from ad platforms, formatted, and delivered every week. No spreadsheet wrangling.</p>
-            </div>
-            <div class="result-card animate-on-scroll">
-                <span class="result-icon">→</span>
-                <h3>Alerts Before Things Break</h3>
-                <p>Automated tracking for budget pacing, conversion drops, and missed deadlines.</p>
-            </div>
-            <div class="result-card animate-on-scroll">
-                <span class="result-icon">→</span>
-                <h3>SOPs Your Team Actually Uses</h3>
-                <p>Clear documentation for every automation: how to use it, how to fix it, and what changed.</p>
-            </div>
-            <div class="result-card animate-on-scroll">
-                <span class="result-icon">→</span>
-                <h3>Dashboard for Ops Visibility</h3>
-                <p>Real-time views on capacity, throughput, and where work is getting stuck.</p>
-            </div>
+<!-- ════════ FRONT-END ════════ -->
+<section class="front-end">
+    <h2>Start here: <span>Reporting Consolidation Sprint</span></h2>
+    <div class="fe-container">
+        <div class="fe-price">$1,000</div>
+        <div class="fe-timeline">Delivered in 48 hours</div>
+        <p>Before the full build, we fix reporting first. One system, all clients, immediate time savings — plus a full diagnostic of what else is broken.</p>
+        <div class="fe-list">
+            <div class="fe-list-item">Working reporting system connected to your ad platforms</div>
+            <div class="fe-list-item">Unified KPI dashboards for all clients — one system, unlimited clients</div>
+            <div class="fe-list-item">3 core metrics defined and locked in</div>
+            <div class="fe-list-item">Scheduled report sends (weekly/monthly, your choice)</div>
+            <div class="fe-list-item">Leak audit recap with ops readiness score</div>
+            <div class="fe-list-item">15-minute Loom walkthrough of your live system</div>
         </div>
-    </section>
+        <p>60+ minutes saved per client per month on reporting. Immediately. The system is yours to keep regardless of what happens next.</p>
+        <a href="#booking" class="btn btn-primary">Book the Leak Mapping Session →</a>
+    </div>
+</section>
 
-    <section class="why-me">
-        <h2>Why <span>me.</span></h2>
-        <div class="why-me-content">
-            <p class="animate-on-scroll">I've sat on both sides. I ran an agency and felt the ops chaos firsthand. Since then, I've audited dozens of agency backends and seen the same failure modes on repeat: onboarding stalls, handoffs break, reporting stays manual.</p>
-            <p class="animate-on-scroll">I fix those patterns first—with drop-in, stack-agnostic automations built from what actually works.</p>
-        </div>
-        <div class="artifacts animate-on-scroll">
-            <span class="artifact-item">Tech-stack Health Check</span>
-            <span class="artifact-item">Math-of-Opportunity Calculator</span>
-            <span class="artifact-item">Onboarding Blueprint</span>
-            <span class="artifact-item">Expectation Matrix</span>
-            <span class="artifact-item">Retention Framework</span>
-        </div>
-    </section>
+<!-- ════════ WHY ME ════════ -->
+<section class="why-me">
+    <h2>Why <span>me.</span></h2>
+    <div class="why-me-content">
+        <p class="animate-on-scroll">I ran an agency. I felt the ops chaos firsthand — the late-night reporting, the missed payments, the onboarding that took a week because every step needed me.</p>
+        <p class="animate-on-scroll">After auditing $30–100K MRR agency backends with 3–15 team members, the same failure modes show up every time. I fix those patterns with drop-in, stack-agnostic infrastructure built from what actually works.</p>
+        <p class="animate-on-scroll">I don't do theory. I show you the leak with a live calculator, demo an automation in real time, and lay out the build. If it's not obvious, we don't proceed.</p>
+    </div>
+    <div class="artifacts animate-on-scroll">
+        <span class="artifact-item">Tech-stack Health Check</span>
+        <span class="artifact-item">Math-of-Opportunity Calculator</span>
+        <span class="artifact-item">Onboarding Blueprint</span>
+        <span class="artifact-item">Expectation Matrix</span>
+        <span class="artifact-item">Retention Framework</span>
+    </div>
+</section>
 
-    <section id="booking" class="booking">
-        <h2>Let's <span>talk.</span></h2>
-        <p class="booking-subtitle">15 minutes. I'll map your biggest time drains and show you what we can standardize right now. If it's not obvious in the first call, we don't proceed.</p>
-        <div class="cal-container animate-on-scroll">
-            <div id="my-cal-inline-osp-audit-call" style="width:100%;height:100%;overflow:scroll"></div>
-        </div>
-    </section>
+<!-- ════════ BOOKING ════════ -->
+<section id="booking" class="booking">
+    <h2>Leak Mapping <span>Session.</span></h2>
+    <p class="booking-subtitle">20 minutes. I'll map your biggest ops leaks, show you the dollar cost, and demo one automation live. If it's not obvious, we don't proceed.</p>
+    <div class="cal-container animate-on-scroll">
+        <div id="my-cal-inline" style="width:100%;height:100%;overflow:scroll"></div>
+    </div>
+</section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Free Resources</h4>
-                <a href="#">Math-of-Opportunity Calculator</a>
-                <a href="#">Onboarding Blueprint</a>
-                <a href="#timeline">90-Day Operation Overhaul Roadmap</a>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
-                <a href="#">Imprint / Impressum</a>
-            </div>
-            <div class="footer-section">
-                <h4>Security & Compliance</h4>
-                <a href="#">GDPR Notice</a>
-                <a href="#">Data Processing Agreement</a>
-                <a href="#">Data Handling</a>
-            </div>
+<!-- ════════ FOOTER ════════ -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>Free Resources</h4>
+            <a href="#">Math-of-Opportunity Calculator</a>
+            <a href="#">Onboarding Blueprint</a>
+            <a href="#">Agency Ops Quick-Win Pack</a>
         </div>
-        <div class="footer-bottom">
-            <div>© 2026 AgencyOps</div>
-            <div class="footer-tagline">Systems that run without you.</div>
+        <div class="footer-section">
+            <h4>Legal</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">Imprint / Impressum</a>
         </div>
-    </footer>
+        <div class="footer-section">
+            <h4>Security &amp; Compliance</h4>
+            <a href="#">GDPR Notice</a>
+            <a href="#">Data Processing Agreement</a>
+            <a href="#">Data Handling</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>&copy; 2026 AgencyOps</div>
+        <div class="footer-tagline">Infrastructure that runs without you.</div>
+    </div>
+</footer>
 
-    <!-- Cal inline embed code begins -->
-    <script type="text/javascript">
-        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-        Cal("init", "osp-audit-call", {origin:"https://app.cal.com"});
-        Cal.ns["osp-audit-call"]("inline", {
-            elementOrSelector:"#my-cal-inline-osp-audit-call",
-            config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
-            calLink: "silas-voglmaier-test/osp-audit-call",
+<!-- Cal embed -->
+<script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "leak-mapping", {origin:"https://app.cal.com"});
+    Cal.ns["leak-mapping"]("inline", {
+        elementOrSelector:"#my-cal-inline",
+        config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+        calLink: "silas-voglmaier-test/osp-audit-call",
+    });
+    Cal.ns["leak-mapping"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+
+<!-- Scroll animation -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 100);
+                observer.unobserve(entry.target);
+            }
         });
-        Cal.ns["osp-audit-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-    </script>
-    <!-- Cal inline embed code ends -->
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
 
-    <!-- Scroll animation script -->
-    <script>
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html>
