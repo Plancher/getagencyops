@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agency Control Layer — Three Departments. One System. Zero Daily Heroics.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700;900&family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #000000;
+  --navy: #14213D;
+  --orange: #FCA311;
+  --gray: #E5E5E5;
+  --white: #FFFFFF;
+  --font-headline: 'Inconsolata', monospace;
+  --font-sub: 'Roboto Mono', monospace;
+  --font-body: 'Josefin Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--black);
+  background: var(--white);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.container--narrow { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  padding: 18px 40px;
+  background: var(--orange);
+  color: var(--black);
+  text-decoration: none;
+  border: 2px solid var(--black);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+}
+.btn:hover {
+  background: var(--black);
+  color: var(--orange);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 var(--orange);
+}
+
+.section-label {
+  font-family: var(--font-sub);
+  font-style: italic;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 12px;
+  display: block;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-headline); line-height: 1.15; }
+h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; }
+h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; }
+p { font-size: 1.05rem; color: var(--navy); }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px;
+}
+
+/* ═══════ HERO ═══════ */
+.hero {
+  background: var(--black);
+  color: var(--white);
+  padding: 24px 0 36px;
+  position: relative;
+  text-align: center;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 5px;
+  background: var(--orange);
+}
+.hero__tag {
+  font-family: var(--font-sub);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+  display: block;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; max-width: 860px; margin-left: auto; margin-right: auto; }
+.hero h1 span { color: var(--orange); }
+
+.hero__video-wrap {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto 20px;
+  position: relative;
+  background: #111;
+  border: 2px solid #222;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+.hero__video-wrap:hover { border-color: var(--orange); }
+.hero__video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(252,163,17,0.06) 0%, transparent 60%);
+}
+.hero__play {
+  width: 52px; height: 52px;
+  background: var(--orange);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 0 0 rgba(252,163,17,0.4);
+}
+.hero__video-wrap:hover .hero__play {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 14px rgba(252,163,17,0.1);
+}
+.hero__play svg { width: 22px; height: 22px; margin-left: 3px; }
+.hero__video-label {
+  position: absolute;
+  bottom: 12px; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-sub);
+  font-size: 0.72rem;
+  color: #555;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hero__sub {
+  font-family: var(--font-sub);
+  font-style: italic;
+  font-size: 0.93rem;
+  color: #888;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.hero__desc {
+  color: #bbb;
+  margin-bottom: 20px;
+  font-size: 0.98rem;
+  max-width: 660px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 16px 0 28px; }
+  .hero h1 { font-size: 1.55rem; margin-bottom: 18px; }
+  .hero__video-wrap { margin-bottom: 18px; }
+  .hero__sub { font-size: 0.82rem; margin-bottom: 10px; }
+  .hero__desc { font-size: 0.88rem; margin-bottom: 16px; }
+  .hero .btn { padding: 14px 28px; font-size: 0.85rem; width: 100%; }
+  .hero__play { width: 46px; height: 46px; }
+  .hero__play svg { width: 18px; height: 18px; }
+}
+
+/* ═══════ LOGOS ═══════ */
+.logos-bar {
+  background: var(--gray);
+  padding: 18px 0;
+  text-align: center;
+}
+.logos-bar span {
+  font-family: var(--font-sub);
+  font-style: italic;
+  font-size: 0.73rem;
+  color: #888;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ═══════ PROBLEM ═══════ */
+.problem { padding: 100px 0; background: var(--white); }
+.problem h2 { margin-bottom: 40px; max-width: 750px; }
+.problem h2 span { color: var(--orange); }
+.problem__text { max-width: 720px; }
+.problem__text p { margin-bottom: 20px; }
+.problem__text p strong { color: var(--black); font-weight: 600; }
+.problem__callout {
+  margin-top: 36px;
+  padding: 24px 28px;
+  border-left: 4px solid var(--orange);
+  background: #FAFAFA;
+}
+.problem__callout p {
+  font-family: var(--font-sub);
+  font-style: italic;
+  font-size: 0.93rem;
+  color: var(--navy);
+}
+
+/* ═══════ OPPORTUNITY ═══════ */
+.opportunity { padding: 100px 0; background: var(--black); color: var(--white); }
+.opportunity h2 { color: var(--white); margin-bottom: 20px; }
+.opportunity h2 span { color: var(--orange); }
+.opportunity__sub {
+  font-family: var(--font-sub);
+  font-style: italic;
+  color: #888;
+  margin-bottom: 36px;
+  font-size: 0.93rem;
+}
+.opportunity p { color: #bbb; margin-bottom: 20px; }
+.opportunity p strong { color: var(--white); }
+
+/* ═══════ WHO FOR ═══════ */
+.who-for { padding: 100px 0; background: var(--white); }
+.who-for h2 { text-align: center; margin-bottom: 60px; }
+.persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.persona-card {
+  border: 2px solid var(--black);
+  padding: 36px 28px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.persona-card:hover { transform: translateY(-4px); box-shadow: 6px 6px 0 var(--orange); }
+.persona-card__icon {
+  width: 48px; height: 48px;
+  background: var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.persona-card__icon svg { width: 24px; height: 24px; }
+.persona-card h3 { margin-bottom: 12px; font-size: 1.1rem; }
+.persona-card p { font-size: 0.95rem; }
+.who-for__not {
+  text-align: center;
+  margin-top: 40px;
+  font-family: var(--font-sub);
+  font-style: italic;
+  font-size: 0.83rem;
+  color: #888;
+}
+
+/* ═══════ VALUE PROPS ═══════ */
+.value-props { padding: 100px 0; background: #FAFAFA; }
+.value-props h2 { text-align: center; margin-bottom: 60px; }
+.vp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.vp-card {
+  background: var(--white);
+  border: 1px solid var(--gray);
+  padding: 36px 32px;
+  transition: border-color 0.25s ease;
+}
+.vp-card:hover { border-color: var(--orange); }
+.vp-card__icon {
+  width: 40px; height: 40px;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.vp-card__icon svg { width: 20px; height: 20px; }
+.vp-card h3 { margin-bottom: 10px; }
+.vp-card p { font-size: 0.95rem; }
+
+/* ═══════ ORIGIN ═══════ */
+.origin { padding: 100px 0; background: var(--black); color: var(--white); }
+.origin h2 { color: var(--white); margin-bottom: 36px; }
+.origin h2 span { color: var(--orange); }
+.origin p { color: #bbb; margin-bottom: 20px; }
+.origin p strong { color: var(--white); font-weight: 600; }
+.origin__highlight {
+  border-left: 4px solid var(--orange);
+  padding-left: 24px;
+  margin: 28px 0;
+}
+.origin__highlight p {
+  color: #ddd;
+  font-family: var(--font-sub);
+  font-style: italic;
+  font-size: 0.93rem;
+}
+
+/* ═══════ HOW IT WORKS ═══════ */
+.how-it-works { padding: 100px 0; background: var(--white); }
+.how-it-works h2 { text-align: center; margin-bottom: 16px; }
+.how-it-works__sub {
+  text-align: center;
+  font-family: var(--font-sub);
+  font-style: italic;
+  color: #888;
+  margin-bottom: 60px;
+  font-size: 0.88rem;
+}
+.phases { max-width: 800px; margin: 0 auto; }
+.phase {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 28px;
+  margin-bottom: 48px;
+  align-items: start;
+}
+.phase__number {
+  width: 64px; height: 64px;
+  background: var(--black);
+  color: var(--orange);
+  font-family: var(--font-headline);
+  font-weight: 900;
+  font-size: 1.6rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.phase h3 { margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.03em; }
+.phase p { font-size: 0.98rem; }
+
+/* ═══════ DEPARTMENTS ═══════ */
+.departments { padding: 100px 0; background: #FAFAFA; }
+.departments h2 { text-align: center; margin-bottom: 16px; }
+.departments__sub {
+  text-align: center;
+  font-family: var(--font-sub);
+  font-style: italic;
+  color: #888;
+  margin-bottom: 60px;
+  font-size: 0.88rem;
+}
+.dept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.dept-card {
+  background: var(--white);
+  border: 2px solid var(--black);
+  padding: 36px 28px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.dept-card:hover { transform: translateY(-4px); box-shadow: 6px 6px 0 var(--orange); }
+.dept-card__icon {
+  width: 48px; height: 48px;
+  background: var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.dept-card__icon svg { width: 24px; height: 24px; }
+.dept-card h3 { margin-bottom: 12px; font-size: 1.05rem; }
+.dept-card p { font-size: 0.93rem; }
+
+/* ═══════ OFFER ═══════ */
+.offer { padding: 100px 0; background: var(--white); }
+.offer h2 { text-align: center; margin-bottom: 16px; }
+.offer__sub {
+  text-align: center;
+  font-family: var(--font-sub);
+  font-style: italic;
+  color: #888;
+  margin-bottom: 50px;
+  font-size: 0.88rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.offer-card {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 2px solid var(--orange);
+  padding: 48px 40px;
+  text-align: center;
+}
+.offer-card__name {
+  font-family: var(--font-headline);
+  font-weight: 900;
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+.offer-card__desc {
+  font-family: var(--font-sub);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 32px;
+}
+.offer-card__features {
+  text-align: left;
+  list-style: none;
+  margin-bottom: 36px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.offer-card__features li {
+  font-size: 0.92rem;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--gray);
+  color: var(--navy);
+  padding-left: 22px;
+  position: relative;
+}
+.offer-card__features li::before {
+  content: '\2192';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 700;
+}
+.offer-card .btn { font-size: 0.95rem; }
+
+/* ═══════ GUARANTEE ═══════ */
+.guarantee {
+  padding: 100px 0;
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+}
+.guarantee__seal {
+  width: 100px; height: 100px;
+  border: 3px solid var(--orange);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 32px;
+}
+.guarantee__seal svg { width: 40px; height: 40px; }
+.guarantee h2 { color: var(--white); margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto; }
+.guarantee h2 span { color: var(--orange); }
+.guarantee p { color: #bbb; max-width: 680px; margin: 0 auto 20px; }
+.guarantee p strong { color: var(--white); }
+
+/* ═══════ FUTURE ═══════ */
+.future { padding: 100px 0; background: var(--white); }
+.future h2 { text-align: center; margin-bottom: 60px; }
+.future__split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.future__good, .future__bad { padding: 40px 36px; }
+.future__good { background: #F8FFF8; border: 2px solid #C5E8C5; }
+.future__bad { background: #FFF8F8; border: 2px solid #E8C5C5; }
+.future h3 { margin-bottom: 16px; }
+.future p { font-size: 0.98rem; margin-bottom: 14px; }
+.future p strong { color: var(--black); }
+.future__closing {
+  text-align: center;
+  margin-top: 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.future__closing p { font-size: 1.05rem; margin-bottom: 16px; }
+
+/* ═══════ OBJECTIONS ═══════ */
+.objections { padding: 100px 0; background: #FAFAFA; }
+.objections h2 { text-align: center; margin-bottom: 60px; }
+.objection-list { max-width: 780px; margin: 0 auto; }
+.objection {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--gray);
+}
+.objection:last-child { border-bottom: none; }
+.objection__q {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 16px;
+  color: var(--black);
+}
+.objection p { margin-bottom: 14px; }
+.objection p strong { color: var(--black); font-weight: 600; }
+
+/* ═══════ FAQ ═══════ */
+.faq { padding: 100px 0; background: var(--white); }
+.faq h2 { text-align: center; margin-bottom: 60px; }
+.faq-list { max-width: 780px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--gray); }
+.faq-item__q {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 22px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: color 0.2s;
+}
+.faq-item__q:hover { color: var(--orange); }
+.faq-item__q::after {
+  content: '+';
+  font-size: 1.4rem;
+  color: var(--orange);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+.faq-item.open .faq-item__q::after { transform: rotate(45deg); }
+.faq-item__a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-item__a { max-height: 400px; padding-bottom: 22px; }
+.faq-item__a p { font-size: 0.95rem; }
+
+/* ═══════ CTA / CAL ═══════ */
+.cta-section {
+  padding: 80px 0 100px;
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+}
+.cta-section h2 { color: var(--white); margin-bottom: 12px; }
+.cta-section h2 span { color: var(--orange); }
+.cta-section__sub {
+  font-family: var(--font-sub);
+  font-style: italic;
+  color: #888;
+  margin-bottom: 48px;
+  font-size: 0.88rem;
+}
+.cal-embed-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 2px solid var(--orange);
+  padding: 4px;
+  min-height: 600px;
+}
+#my-cal-inline-90-day-build-scoping-call {
+  width: 100%;
+  height: 650px;
+  overflow: auto;
+}
+
+.footer {
+  background: var(--black);
+  border-top: 1px solid #222;
+  padding: 32px 0;
+  text-align: center;
+}
+.footer p { font-family: var(--font-sub); font-size: 0.75rem; color: #555; }
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width: 900px) {
+  .persona-grid { grid-template-columns: 1fr; }
+  .vp-grid { grid-template-columns: 1fr; }
+  .dept-grid { grid-template-columns: 1fr; }
+  .future__split { grid-template-columns: 1fr; }
+  .offer-card { padding: 36px 24px; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="container">
+    <span class="hero__tag animate-in">For Agency Founders at $20K–$100K MRR</span>
+    <h1 class="animate-in delay-1">Your Agency Runs on Your Brain. <span>That Ends Now.</span></h1>
+
+    <div class="hero__video-wrap animate-in delay-2">
+      <div class="hero__video-overlay"></div>
+      <div class="hero__play">
+        <svg viewBox="0 0 24 24" fill="none"><polygon points="6,3 20,12 6,21" fill="#000"/></svg>
+      </div>
+      <span class="hero__video-label">See the build in action</span>
+    </div>
+
+    <p class="hero__sub animate-in delay-3">Three Departments. One System. Zero Daily Heroics.</p>
+    <p class="hero__desc animate-in delay-3">The Agency Control Layer installs a complete operating system across Sales, Client Workflows, and Delivery in 90 days — so your team runs the business without routing a single decision through you.</p>
+    <a href="#book" class="btn animate-in delay-3">Book Your Leak Mapping Session</a>
+  </div>
+</section>
+
+<div class="logos-bar">
+  <span>Built from auditing 100+ agency backends · Stack-agnostic · HubSpot · ClickUp · Stripe · GoHighLevel &amp; more</span>
+</div>
+
+<!-- ═══════ PROBLEM ═══════ -->
+<section class="problem">
+  <div class="container--narrow">
+    <span class="section-label">The Core Problem</span>
+    <h2>The Real Reason Your Agency Gets Harder to Run <span>as It Grows</span></h2>
+    <div class="problem__text">
+      <p>Every time you answered a question instead of writing down the answer. Every time you approved something instead of creating a rule for it. Every time you just handled it yourself because explaining felt slower — <strong>you added to a balance sheet nobody showed you.</strong></p>
+      <p>It has a name: <strong>Structural Founder Debt.</strong> And it compounds exactly like financial debt does. You don't feel it building. But one day the business gets big enough that the debt comes due all at once — and suddenly your team can't move without you, your clients expect you on every call, and you can't take a single day off without something breaking.</p>
+      <p>This is not a discipline problem. It is not a hiring problem. It is an architectural flaw — one baked into your agency the moment you started growing without building the infrastructure to support that growth.</p>
+      <div class="problem__callout">
+        <p>The chaos you're living in right now is not a character flaw. It is the mathematically predictable result of a business that was never designed to run without you. And you cannot fix an architectural problem with a behavioral solution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ OPPORTUNITY ═══════ -->
+<section class="opportunity">
+  <div class="container--narrow">
+    <span class="section-label">The Opportunity</span>
+    <h2>What Happens When the Business <span>Stops Needing You</span> to Function</h2>
+    <p class="opportunity__sub">There is a specific moment every founder in this situation is chasing. Not a revenue number. Not a headcount milestone.</p>
+    <p>A morning where you open your laptop, see your team already moving, and realize — <strong>nothing is waiting for you.</strong> No fires. No questions. No approvals. Just a business running on its own architecture.</p>
+    <p>That moment is not a fantasy. It is an engineering outcome. The only way to reach it is by converting everything that currently lives in your head into <strong>fixed, team-executable infrastructure</strong> that holds its shape whether you are present or not.</p>
+    <p>Not a course that teaches your team how to work better. Not a framework you have to implement yourself on top of a 60-hour week. A <strong>complete operating system</strong> — built directly into your existing tool stack, across three departments — installed, handed off, and running before the engagement closes.</p>
+  </div>
+</section>
+
+<!-- ═══════ WHO FOR ═══════ -->
+<section class="who-for">
+  <div class="container">
+    <span class="section-label" style="text-align:center; display:block;">Who This Is For</span>
+    <h2>Built for Agency Founders</h2>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </div>
+        <h3>Stuck in the Operational Loop</h3>
+        <p>You're at $20K–$100K MRR, your team is in place, but every decision still routes through you. Delivery, billing, client questions — all of it lands on your plate.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        </div>
+        <h3>Tried Everything Else</h3>
+        <p>You've bought the courses, hired the contractors, and built the SOPs that nobody follows. You need something installed — not something else to manage.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        </div>
+        <h3>Done Being the Bottleneck</h3>
+        <p>You built this business to create freedom. Right now it owns you more than you own it. You're ready for that to change — structurally, not just on paper.</p>
+      </div>
+    </div>
+    <p class="who-for__not">This is not for solo freelancers, founders under $15K MRR, or anyone looking for a course to implement on their own.</p>
+  </div>
+</section>
+
+<!-- ═══════ VALUE PROPS ═══════ -->
+<section class="value-props">
+  <div class="container">
+    <span class="section-label" style="text-align:center; display:block;">What Changes</span>
+    <h2>What Your Agency Looks Like on the Other Side</h2>
+    <div class="vp-grid">
+      <div class="vp-card">
+        <div class="vp-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 11l-3 3-3-3"/></svg>
+        </div>
+        <h3>Your Team Handles Delivery — Without Asking You</h3>
+        <p>The decision frameworks, SOPs, and quality checkpoints your team needs to execute independently — installed. The work ships without a single Slack message landing in your inbox first.</p>
+      </div>
+      <div class="vp-card">
+        <div class="vp-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Your Pipeline Stops Dying When You Go Heads-Down</h3>
+        <p>Automated follow-up sequences, CRM pipeline stages, booking logic, and dunning workflows — installed into your existing stack. Sales keeps moving even when you're buried in delivery.</p>
+      </div>
+      <div class="vp-card">
+        <div class="vp-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Onboarding Goes From 7 Days to Under 48 Hours</h3>
+        <p>Intake forms, asset collection, kickoff timelines, scope boundaries — all defined, automated, and handed to your team. New clients feel like wins again. Not emergencies.</p>
+      </div>
+      <div class="vp-card">
+        <div class="vp-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>You See Problems Before Clients Feel Them</h3>
+        <p>Live dashboards and churn early-warning signals give you and your team real visibility. You manage by data. Not by gut. Not by panic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ORIGIN (short) ═══════ -->
+<section class="origin">
+  <div class="container--narrow">
+    <span class="section-label">The Origin</span>
+    <h2>Why This <span>Exists</span></h2>
+    <p>I've seen what agency backends actually look like — across over a hundred of them. The same failure modes repeat every time: onboarding stalls, handoffs break, reporting stays manual, and the founder is still the router for everything.</p>
+    <div class="origin__highlight">
+      <p>The chaos isn't unique to any one agency. It's the predictable result of building without infrastructure — and it has a structural fix.</p>
+    </div>
+    <p>The Agency Control Layer came out of that work. Not a framework. Not a course. <strong>The build I needed when I was the bottleneck</strong> — installed into your existing stack, handed off to your team, and running before we close the engagement.</p>
+  </div>
+</section>
+
+<!-- ═══════ HOW IT WORKS (3 Phases) ═══════ -->
+<section class="how-it-works">
+  <div class="container">
+    <span class="section-label" style="text-align:center; display:block;">The 90-Day Build</span>
+    <h2>How It Works</h2>
+    <p class="how-it-works__sub">Three phases. Three departments. One installed system.</p>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase__number">01</div>
+        <div>
+          <h3>Visibility — Weeks 1–4</h3>
+          <p>You finally see where money and time are leaking. Metrics defined and baselined. Dashboards built and connected. Leak points identified and prioritized. Tech-stack audit completed. Relief starts here — most founders get 5–8 hours back before anything major gets rebuilt.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase__number">02</div>
+        <div>
+          <h3>Control — Weeks 5–8</h3>
+          <p>Manual steps disappear. Handoffs stop breaking. Onboarding compressed to under 48 hours. CRM hygiene installed. Billing recovery automated. PM clarity established. Communication cadences set across all client accounts.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase__number">03</div>
+        <div>
+          <h3>Stability — Weeks 9–12</h3>
+          <p>The business runs without daily heroics. Full automation installs across all departments. Team handover completed. Stress-test and refine. System documented and transferred. Your team proves they can run a full week without you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 3 DEPARTMENTS ═══════ -->
+<section class="departments">
+  <div class="container">
+    <span class="section-label" style="text-align:center; display:block;">What Gets Built</span>
+    <h2>Three Departments. Fully Installed.</h2>
+    <p class="departments__sub">Each department gets its own infrastructure — connected, automated, and handed off to your team.</p>
+    <div class="dept-grid">
+      <div class="dept-card">
+        <div class="dept-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3>Sales Development</h3>
+        <p>CRM architecture, pipeline stages, lead scoring, booking automations, reminder sequences, no-show logic, billing and dunning workflows, and a metrics dashboard. Your pipeline stops leaking. You stop chasing payments manually.</p>
+      </div>
+      <div class="dept-card">
+        <div class="dept-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Client Workflows</h3>
+        <p>Onboarding blueprint, communication cadences, escalation paths, Client Brain holding all context and history, and upsell triggers built on milestone logic. Your team stops routing every client question through you.</p>
+      </div>
+      <div class="dept-card">
+        <div class="dept-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        </div>
+        <h3>Project Delivery</h3>
+        <p>Sprint cadence, RACI ownership, QA gates, capacity planning, workload balancing, reporting automation with KPI dashboards per client, and SLAs with response times and severity maps. You see overload before clients feel it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SINGLE OFFER (no price) ═══════ -->
+<section class="offer" id="offer">
+  <div class="container">
+    <span class="section-label" style="text-align:center; display:block;">The Offer</span>
+    <h2>The Agency Control Layer</h2>
+    <p class="offer__sub">A done-for-you 90-day build. Three departments. One installed system. Zero daily heroics.</p>
+    <div class="offer-card">
+      <div class="offer-card__name">What You Get</div>
+      <p class="offer-card__desc">Everything installed into your existing tool stack</p>
+      <ul class="offer-card__features">
+        <li>Sales Development System — pipeline, automations, dunning, dashboards</li>
+        <li>Client Workflows System — onboarding, cadences, Client Brain, upsell triggers</li>
+        <li>Delivery System — sprints, QA gates, capacity planning, SLAs</li>
+        <li>Ops Map &amp; Full SOP Playbook — documented and team-executable</li>
+        <li>Automation Blueprint — sequenced build plan across all departments</li>
+        <li>Live Dashboards — hours saved, revenue caught, capacity, performance</li>
+        <li>Team Handover Package — video training + docs + competency checkpoints</li>
+        <li>Change Log &amp; Audit Trail — full accountability from day one</li>
+        <li>Transparent Build Tracker — watch the infrastructure go up in real time</li>
+        <li>Tech-Stack Health Check + Math-of-Opportunity Calculator</li>
+        <li>Onboarding Blueprint + Expectation Matrix + Scope Control</li>
+        <li>Client Retention Framework + Churn Early-Warning System</li>
+      </ul>
+      <a href="#book" class="btn">Book Your Leak Mapping Session</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ GUARANTEE ═══════ -->
+<section class="guarantee">
+  <div class="container">
+    <div class="guarantee__seal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" stroke="var(--orange)" stroke-width="2"/></svg>
+    </div>
+    <span class="section-label">Our Guarantee</span>
+    <h2>The <span>"First Clean Week"</span> Guarantee</h2>
+    <p>By the end of the 90-day build, your team runs a full operational week — client delivery, onboarding, reporting, billing — <strong>without a single decision routing through you.</strong></p>
+    <p>If we reach Day 90 and it hasn't happened, we don't stop. We keep building, refining, and installing until it does — at no additional cost.</p>
+    <p>This isn't a refund clause. It's a commitment posture. <strong>We're not done until your team proves they can run the business without you in the loop.</strong></p>
+  </div>
+</section>
+
+<!-- ═══════ FUTURE ═══════ -->
+<section class="future">
+  <div class="container">
+    <h2>One Decision Separates These Two Futures</h2>
+    <div class="future__split">
+      <div class="future__good">
+        <h3 style="color:#2A7D2A;">The Installed Version</h3>
+        <p>It's a Tuesday morning. You wake up at 7:30 without an alarm. You open your laptop and the team is already moving. A new client finished onboarding overnight. Billing ran automatically. Reports went out on schedule.</p>
+        <p>You spend your morning on one thing: a strategic partnership call that could add $15K MRR. By 5pm, you close the laptop. Not because you gave up. <strong>Because the work is done.</strong></p>
+      </div>
+      <div class="future__bad">
+        <h3 style="color:#8B2020;">The Default Version</h3>
+        <p>Next month looks exactly like this month. Thirteen-hour days. The same questions from the same team members. The same client fires. The same cash flow math at 2am.</p>
+        <p>The same feeling that you built something that owns you instead of the other way around. <strong>More revenue. More chaos. Same ceiling.</strong></p>
+      </div>
+    </div>
+    <div class="future__closing">
+      <p>You already know the problem. You've known for months. The only question is whether you keep paying for it — or whether you stop.</p>
+      <a href="#book" class="btn">Book Your Leak Mapping Session</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ OBJECTIONS ═══════ -->
+<section class="objections">
+  <div class="container">
+    <span class="section-label" style="text-align:center; display:block;">Still On The Fence?</span>
+    <h2>Let's Talk About It</h2>
+    <div class="objection-list">
+      <div class="objection">
+        <div class="objection__q">"I've tried delegation before. It made things worse."</div>
+        <p>That's not a delegation problem. It's a sequencing problem. Every previous attempt required you to implement the solution — which is the exact problem you were trying to solve.</p>
+        <p><strong>The Agency Control Layer is different in one specific way: we build it.</strong> You participate in extraction sessions. We assemble the infrastructure. Your team runs it.</p>
+      </div>
+      <div class="objection">
+        <div class="objection__q">"I don't have time to go through an implementation process."</div>
+        <p>Good. Because there is no implementation process on your end. Week 1 starts with the Drain Map — a diagnostic that identifies where your bandwidth is bleeding most.</p>
+        <p><strong>You get 5–8 hours back before anything gets rebuilt.</strong> Relief comes first. From there, the build happens around your existing schedule. You are not the one building this. That is the entire point.</p>
+      </div>
+      <div class="objection">
+        <div class="objection__q">"My situation is too specific for a standard framework."</div>
+        <p>This is not a standard framework. The build starts with a full audit of your existing tool stack, your specific team structure, and your actual decision drains.</p>
+        <p><strong>Stack-agnostic. Built around your reality.</strong> Not a template dropped on your situation. The pattern is the same across agencies. The build is always specific.</p>
+      </div>
+      <div class="objection">
+        <div class="objection__q">"What if it doesn't work for my agency?"</div>
+        <p>That's what the First Clean Week Guarantee is for. By Day 90, your team runs a full operational week without you. If that hasn't happened, we keep building at no additional cost.</p>
+        <p><strong>You don't pay for a promise. You pay for a result.</strong> And the engagement doesn't close until that result exists.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FAQ ═══════ -->
+<section class="faq">
+  <div class="container">
+    <span class="section-label" style="text-align:center; display:block;">FAQ</span>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-item__q">What exactly is the Agency Control Layer?</div>
+        <div class="faq-item__a"><p>A done-for-you 90-day build that installs a complete operating system across your Sales, Client Workflows, and Delivery departments — directly into your existing tool stack. We build it. Your team runs it.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q">How is this different from hiring a coach or buying a course?</div>
+        <div class="faq-item__a"><p>Every other solution requires you to implement it yourself. That's the exact problem you're paying to solve. We don't hand you a framework. We install a working system and hand it off to your team.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q">What if my tools can't support this?</div>
+        <div class="faq-item__a"><p>Before we build anything, we audit your existing stack for gaps and hidden costs. Most agencies don't need new tools — they need their current ones connected properly.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q">What if my team doesn't follow the new systems?</div>
+        <div class="faq-item__a"><p>The build includes video training, written documentation, and competency checkpoints. The engagement doesn't close until your team proves they can run a full operational week without you.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q">How much of my time does this require?</div>
+        <div class="faq-item__a"><p>Minimal. You participate in extraction sessions so we can map your processes. We do the building. You don't manage the implementation — that's the point.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q">How many active builds do you run at once?</div>
+        <div class="faq-item__a"><p>A maximum of 3. The depth of work required across all three departments means quality collapses beyond that. When slots fill, the next start date moves to the following quarter.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q">I've tried SOPs and delegation before. Why would this work?</div>
+        <div class="faq-item__a"><p>Because those attempts required you to build and implement them — while already drowning. This time, we build it for you. The sequence is different. That's what makes the outcome different.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-item__q">How do I get started?</div>
+        <div class="faq-item__a"><p>Book a Leak Mapping Session below. We'll use the Math-of-Opportunity Calculator to show you exactly where your agency is bleeding time and revenue — with one live automation demo on your actual stack. No pitch. Just math.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA / CAL EMBED ═══════ -->
+<section class="cta-section" id="book">
+  <div class="container">
+    <span class="section-label">Let's Go</span>
+    <h2>Book Your <span>Leak Mapping Session</span></h2>
+    <p class="cta-section__sub">We'll show you exactly where your agency is bleeding time and revenue — with one live automation demo on your actual stack.</p>
+    <div class="cal-embed-wrapper">
+      <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-90-day-build-scoping-call"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>Agency Control Layer &copy; 2026. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item__q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.persona-card, .vp-card, .phase, .dept-card, .objection').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+
+const s = document.createElement('style');
+s.textContent = `.animate-in.persona-card, .animate-in.vp-card, .animate-in.phase, .animate-in.dept-card, .animate-in.objection { opacity: 1 !important; transform: translateY(0) !important; }`;
+document.head.appendChild(s);
+</script>
+
+<script type="text/javascript">
+(function (C, A, L) {
+  let p = function (a, ar) { a.q.push(ar); };
+  let d = C.document;
+  C.Cal = C.Cal || function () {
+    let cal = C.Cal;
+    let ar = arguments;
+    if (!cal.loaded) {
+      cal.ns = {};
+      cal.q = cal.q || [];
+      d.head.appendChild(d.createElement("script")).src = A;
+      cal.loaded = true;
+    }
+    if (ar[0] === L) {
+      const api = function () { p(api, arguments); };
+      const namespace = ar[1];
+      api.q = api.q || [];
+      if (typeof namespace === "string") {
+        cal.ns[namespace] = cal.ns[namespace] || api;
+        p(cal.ns[namespace], ar);
+        p(cal, ["initNamespace", namespace]);
+      } else p(cal, ar);
+      return;
+    }
+    p(cal, ar);
+  };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+
+Cal("init", "90-day-build-scoping-call", {origin:"https://app.cal.com"});
+Cal.ns["90-day-build-scoping-call"]("inline", {
+  elementOrSelector: "#my-cal-inline-90-day-build-scoping-call",
+  config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+  calLink: "silas-voglmaier-test/90-day-build-scoping-call",
+});
+Cal.ns["90-day-build-scoping-call"]("ui", {
+  "cssVarsPerTheme": {
+    "light": {"cal-brand":"#000000"},
+    "dark": {"cal-brand":"#FCA311"}
+  },
+  "hideEventTypeDetails": false,
+  "layout": "month_view"
+});
+</script>
+
+</body>
+</html>
